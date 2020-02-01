@@ -1,0 +1,109 @@
+@mixin toExtraSmall {
+	@media (max-width: 359px) {
+		@content;
+	}
+}
+
+@mixin toSmall {
+	@media (max-width: 767px) {
+		@content;
+	}
+}
+
+@mixin toMedium {
+	@media (max-width: 989px) {
+		@content;
+	}
+}
+
+@mixin toLarge {
+	@media (max-width: 1249px) {
+		@content;
+	}
+}
+
+@mixin atSmall {
+	@media (min-width: 768px) {
+		@content;
+	}
+}
+
+@mixin atMedium {
+	@media (min-width: 990px) {
+		@content;
+	}
+}
+
+@mixin atLarge {
+	@media (min-width: 1250px) {
+		@content;
+	}
+}
+
+@mixin atCustom($min-width) {
+	@media (min-width: $min-width * 1px) {
+		@content;
+	}
+}
+
+@mixin wrapper($max-width: 1170) {
+	width: 100%;
+	max-width: ($max-width + 80) / 10 * 1rem;
+	margin: 0 auto;
+	padding: 0 1.5rem;
+	@include atSmall {
+		padding: 0 2.5rem;
+	}
+}
+
+@mixin h1 {
+	font-size: 3.2rem;
+	@include atSmall {
+		font-size: 4.8rem;
+	}
+	@include atMedium {
+		font-size: 5.6rem;
+	}
+	@include atLarge {
+		font-size: 6.4rem;
+	}
+}
+
+@mixin h2 {
+	font-size: 2.6rem;
+	@include atSmall {
+		font-size: 3rem;
+	}
+	@include atMedium {
+		font-size: 3.2rem;
+	}
+	@include atLarge {
+		font-size: 3.4rem;
+	}
+}
+
+@mixin h3 {
+	font-size: 2rem;
+	@include atSmall {
+		font-size: 2.2rem;
+	}
+	@include atMedium {
+		font-size: 2.4rem;
+	}
+	@include atLarge {
+		font-size: 2.6rem;
+	}
+}
+
+@mixin h4 {
+	font-size: 1.8rem;
+	@include atSmall {
+		font-size: 2rem;
+	}
+	@include atMedium {
+		font-size: 2.2rem;
+	}
+	@include atLarge {
+		font-size: 2.4rem;
+	}
+}
