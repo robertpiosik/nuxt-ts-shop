@@ -8,18 +8,18 @@ interface Product {
 }
 
 interface State {
-  products: Array<Product> | null
+  productsData: Array<Product> | null
 }
 
 export const state = (): State => ({
-  products: null
+  productsData: null
 })
 
 export const getters = getterTree(state, {})
 
 export const mutations = mutationTree(state, {
-  setProducts(state, productsData: State['products']) {
-    state.products = productsData
+  setProducts(state, productsData: State['productsData']) {
+    state.productsData = productsData
   }
 })
 
@@ -27,7 +27,7 @@ export const actions = actionTree(
   { state, getters, mutations },
   {
     async getProducts({ commit }) {
-      const productsData: Array<Product> = await fetch(
+      const productsData = await fetch(
         'http://www.mocky.io/v2/5e3588c72f00007c00793483'
 			).then(r => r.json())
 			
