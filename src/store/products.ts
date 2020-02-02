@@ -15,23 +15,69 @@ export const state = (): State => ({
   productsData: null
 })
 
-export const getters = getterTree(state, {})
+export const getters = getterTree(state, {
+  amountOfProducts: state => {
+    if (state.productsData === null) {
+      return 0
+    } else {
+      return state.productsData.length + 1
+    }
+  }
+})
 
 export const mutations = mutationTree(state, {
-  setProducts(state, productsData: State['productsData']) {
+  setProductsData(state, productsData: State['productsData']) {
     state.productsData = productsData
+  },
+  sortProductsDataByPriceAsc(state) {
+    if (state.productsData === null) return
+
+    state.productsData = state.productsData.sort(
+      (firstProd, secondProd) => firstProd.price - secondProd.price
+    )
+  },
+  sortProductsDataByPriceDesc(state) {
+    if (state.productsData === null) return
+
+    state.productsData = state.productsData.sort(
+      (firstProd, secondProd) => secondProd.price - firstProd.price
+    )
+  },
+  sortProductsDataByNameAZ(state) {
+    if (state.productsData === null) return
+
+    state.productsData = state.productsData.sort((firstProd, secondProd) => {
+      const firstProdTitle = firstProd.title.toUpperCase()
+      const secondProdTitle = secondProd.title.toUpperCase()
+
+      if (firstProdTitle < secondProdTitle) return -1
+      if (firstProdTitle > secondProdTitle) return 1
+      return 0
+    })
+  },
+  sortProductsDataByNameZA(state) {
+    if (state.productsData === null) return
+
+    state.productsData = state.productsData.sort((firstProd, secondProd) => {
+      const firstProdTitle = firstProd.title.toUpperCase()
+      const secondProdTitle = secondProd.title.toUpperCase()
+
+      if (firstProdTitle < secondProdTitle) return -1
+      if (firstProdTitle > secondProdTitle) return 1
+      return 0
+    })
   }
 })
 
 export const actions = actionTree(
   { state, getters, mutations },
   {
-    async getProducts({ commit }) {
+    async getProductsData({ commit }) {
       const productsData = await fetch(
         'http://www.mocky.io/v2/5e3588c72f00007c00793483'
-			).then(r => r.json())
-			
-			commit('setProducts', productsData);
+      ).then(r => r.json())
+
+      commit('setProductsData', productsData)
     }
   }
 )

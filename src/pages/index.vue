@@ -1,10 +1,10 @@
 <template lang="pug">
 	div(:class="$style.wrapper")
 		div cart
-		template(v-if="productsData !== null")
+		template(v-if="productsDataSortedByPrice !== null")
 			ProductsGrid()
 				ProductsGridItem(
-					v-for="(product, index) in productsData"
+					v-for="(product, index) in productsDataSortedByPrice"
 					:key="index"
 				)
 		template(v-else)
@@ -20,12 +20,16 @@ import ProductsGridItem from './../components/ProductsGridItem.vue'
 
 @Component({ components: { ProductsGrid, ProductsGridItem } })
 export default class extends Vue {
-  get productsData() {
-    return this.$accessor.products.productsData
-  }
+  get productsDataSortedByPrice() {
+    return this.$accessor.products.productsDataSortedByPrice
+	}
+	
+	get productsDataSortedByName() {
+		return this.$accessor.products.productsDataSortedByName
+	}
 
   mounted() {
-    this.$accessor.products.getProducts()
+    this.$accessor.products.getProductsData()
   }
 }
 </script>

@@ -7,10 +7,10 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 
 @Component
 export default class extends Vue {
-  // @Prop({ type: Number, required: true }) readonly id!: number
-  // @Prop({ type: String, required: true }) readonly title!: string
-  // @Prop({ type: String, required: true }) readonly thumbnail!: string
-  // @Prop({ type: Number, required: true }) readonly price!: number
+  @Prop({ type: Number, required: true }) readonly id!: number
+  @Prop({ type: String, required: true }) readonly title!: string
+  @Prop({ type: String, required: true }) readonly thumbnail!: string
+  @Prop({ type: Number, required: true }) readonly price!: number
 }
 </script>
 
