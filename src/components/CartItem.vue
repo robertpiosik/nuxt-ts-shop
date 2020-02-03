@@ -32,20 +32,12 @@ export default class extends Vue {
   get priceFormatted() {
     return priceFormatter(this.price)
   }
-
-  // created() {
-  //   const { title, price, thumbnail } = this.$accessor.products.productsData[
-  //     this.productIndex
-  //   ]
-  //   this.price = price
-  //   this.thumbnail = thumbnail
-  // }
 }
 </script>
 
 <style lang="scss" module>
 .container {
-	display: flex;
+  display: flex;
   flex-direction: column;
   @include atSmall {
     flex-direction: row;
@@ -72,17 +64,15 @@ export default class extends Vue {
   }
 }
 .title {
-	display: flex;
-	align-items: center;
-	margin-left: 1.5rem;
-	width: 20rem;
+  display: flex;
+  align-items: center;
+  margin-left: 1.5rem;
+  width: 20rem;
 }
 .quantity {
-	display: flex;
-	width: 10rem;
-
+  display: flex;
+  width: 10rem;
 }
 .priceAndTotal {
-
 }
 </style>

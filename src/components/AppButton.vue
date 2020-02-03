@@ -17,7 +17,10 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 export default class extends Vue {
   @Prop(String) readonly to?: string
   @Prop(String) readonly href?: string
-  @Prop({ type: String, default: 'normal' }) readonly size!: 'small' | 'normal' | 'large'
+  @Prop({ type: String, default: 'normal' }) readonly size!:
+    | 'small'
+    | 'normal'
+    | 'large'
   @Prop({ type: Boolean, default: false }) readonly isLoading!: boolean
 
   get buttonType() {
@@ -34,15 +37,15 @@ export default class extends Vue {
 
 <style lang="scss" module>
 .button {
-	@include toExtraSmall {
-		font-size: 1.4rem;
-	padding: .6rem 1rem;
-
-	}
+  @include toExtraSmall {
+    font-size: 1.4rem;
+    padding: 0.6rem 1rem;
+  }
   background: $primary;
   color: white;
   font-weight: 600;
-	padding: 1rem 1.3rem;
+  padding: 1rem 1.3rem;
+  border-radius: 0.5rem;
   &:hover {
     filter: brightness(120%);
   }

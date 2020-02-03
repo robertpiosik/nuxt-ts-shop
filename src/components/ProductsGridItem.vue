@@ -49,7 +49,13 @@ export default class extends Vue {
   flex-direction: column;
   align-items: center;
   padding: 3rem 0;
-  border: 0.1rem solid rgba(black, 0.1);
+	border-radius: 1rem;
+	box-shadow: 0 5px 10px rgba(0,0,0,0.12);
+	transition: ease-in-out .1s;
+	&:hover {
+	box-shadow: 0 8px 12px rgba(0,0,0,0.14);
+
+	}
 }
 .thumbnail {
   position: relative;
@@ -60,6 +66,7 @@ export default class extends Vue {
   width: 12rem;
   height: 12rem;
   overflow: hidden;
+	border-radius: 1rem;
   @include atSmall {
     width: 20rem;
     height: 20rem;
