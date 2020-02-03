@@ -11,7 +11,12 @@ export const priceFormatter = (price: number) => {
   const newPriceSplitted = newPrice.split(',')
 
   const value = newPriceSplitted[0]
-  const penny = `,${newPriceSplitted[1]}`
+  let penny = `,${newPriceSplitted[1]}`
+
+	// Fixes ",96000000000004"
+  if (penny.length > 3) {
+    penny = penny.slice(0, 3)
+  }
 
   return {
     value,
