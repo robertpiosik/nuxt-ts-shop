@@ -7,14 +7,18 @@
 			span(:class="$style.priceValue") {{ value }}
 			span(:class="$style.pricePenny") {{ penny }}
 			span {{ ` zł` }}
+		div(:class="$style.addToCart")
+			app-button() ADD TO CART
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 
+import AppButton from './../components/AppButton.vue'
+
 import { priceFormatter } from '../utils/transformations'
 
-@Component
+@Component({ components: { AppButton } })
 export default class extends Vue {
   @Prop({ type: Number, required: true }) readonly id!: number
   @Prop({ type: String, required: true }) readonly title!: string
@@ -35,10 +39,13 @@ export default class extends Vue {
 
 <style lang="scss" module>
 .container {
+  @include toSmall {
+    padding: 1.5rem 0;
+  }
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1.5rem;
+  padding: 3rem 0;
   border: 0.1rem solid rgba(black, 0.1);
 }
 .thumbnail {
@@ -100,5 +107,8 @@ export default class extends Vue {
   @include atSmall {
     font-size: 1.8rem;
   }
+}
+.addToCart {
+  margin-top: 1rem;
 }
 </style>
