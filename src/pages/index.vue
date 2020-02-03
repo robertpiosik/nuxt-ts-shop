@@ -1,9 +1,9 @@
 <template lang="pug">
 	main
-	
-		app-section(title="Cart")
+
+		app-section(title="Cart" v-if="productsData.length > 0")
 			template(v-if="cartItemsAmount > 0")
-				app-button(@click="toggleCart()") {{ isCartVisible ? 'HIDE CART' : 'SHOW CART'}}{{ ` (${cartItemsAmount})` }}
+				app-button(@click="toggleCart()") {{ isCartVisible ? `HIDE CART (${cartItemsAmount})` : `SHOW CART (${cartItemsAmount})` }}
 				div(v-show="isCartVisible")
 					div(
 						v-for="(item, index) in cartItems"
