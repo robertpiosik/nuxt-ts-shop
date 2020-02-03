@@ -34,7 +34,6 @@
 					)
 			template(v-else)
 				div loading
-
 </template>
 
 <script lang="ts">

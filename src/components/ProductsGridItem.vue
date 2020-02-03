@@ -35,8 +35,8 @@ export default class extends Vue {
     this.penny = penny
   }
 
-	@Emit('addToCart')
-	addToCart() {}
+  @Emit('addToCart')
+  addToCart() {}
 }
 </script>
 
@@ -49,13 +49,15 @@ export default class extends Vue {
   flex-direction: column;
   align-items: center;
   padding: 3rem 0;
-	border-radius: 1rem;
-	box-shadow: 0 5px 10px rgba(0,0,0,0.12);
-	transition: ease-in-out .1s;
-	&:hover {
-	box-shadow: 0 8px 12px rgba(0,0,0,0.14);
-
-	}
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: ease-in-out 0.2s;
+  &:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16);
+    & img {
+      transform: scale(1.05);
+    }
+  }
 }
 .thumbnail {
   position: relative;
@@ -66,7 +68,7 @@ export default class extends Vue {
   width: 12rem;
   height: 12rem;
   overflow: hidden;
-	border-radius: 1rem;
+  border-radius: 1rem;
   @include atSmall {
     width: 20rem;
     height: 20rem;
@@ -76,6 +78,7 @@ export default class extends Vue {
     height: 100%;
     position: absolute;
     object-fit: cover;
+		transition: ease-in-out 0.2s;
   }
 }
 .title {
