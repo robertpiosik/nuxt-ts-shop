@@ -43,9 +43,17 @@ export default class extends Vue {
 }
 .thumbnail {
   position: relative;
-  width: 10rem;
-  height: 10rem;
+  @include toExtraSmall {
+    width: 9rem;
+    height: 9rem;
+  }
+  width: 12rem;
+  height: 12rem;
   overflow: hidden;
+  @include atSmall {
+    width: 20rem;
+    height: 20rem;
+  }
   & img {
     width: 100%;
     height: 100%;
@@ -54,19 +62,43 @@ export default class extends Vue {
   }
 }
 .title {
+  @include toExtraSmall {
+    font-size: 1.4rem;
+  }
   font-weight: bold;
-  font-size: 2rem;
-	color: $primary;
-	margin: 1.5rem 0 .5rem 0;
+  font-size: 1.6rem;
+  color: $primary;
+  margin: 1.5rem 0 0.5rem 0;
+  @include atSmall {
+    font-size: 2rem;
+  }
 }
 .price {
-  font-size: 1.6rem;
+  @include toExtraSmall {
+    font-size: 1.2rem;
+  }
+  font-size: 1.4rem;
+  @include atSmall {
+    font-size: 1.6rem;
+  }
 }
 .priceValue {
-	font-size: 2rem;
-	font-weight: bold;
+  @include toExtraSmall {
+    font-size: 1.6rem;
+  }
+  font-size: 1.8rem;
+  font-weight: bold;
+  @include atSmall {
+    font-size: 2rem;
+  }
 }
 .pricePenny {
-	font-size: 1.8rem;
+  @include toExtraSmall {
+    font-size: 1.4rem;
+  }
+  font-size: 1.6rem;
+  @include atSmall {
+    font-size: 1.8rem;
+  }
 }
 </style>
