@@ -11,7 +11,10 @@
 			div(:class="$style.price")
 				span(:class="$style.priceValue") {{ priceFormatted.value }}
 				span(:class="$style.pricePenny") {{ priceFormatted.penny }}
-			div(:class="$style.total")
+			div(
+				v-if="price !== price * quantity"
+				:class="$style.total"
+			)
 				span(:class="$style.priceValue") {{ totalFormatted.value }}
 				span(:class="$style.pricePenny") {{ totalFormatted.penny }}
 </template>
@@ -32,14 +35,15 @@ export default class CartItem extends Vue {
   get totalFormatted() {
     return priceFormatter(this.price * this.quantity)
   }
+
   get priceFormatted() {
     return priceFormatter(this.price)
   }
 
   @Emit('increaseQuantity')
-	increaseQuantity() {}
-	
-	@Emit('decreaseQuantity')
+  increaseQuantity() {}
+
+  @Emit('decreaseQuantity')
   decreaseQuantity() {}
 }
 </script>
@@ -83,7 +87,9 @@ export default class CartItem extends Vue {
   color: $primary;
 }
 .quantity {
-  display: flex;
+	display: flex;
+	align-items: center;
+	justify-content: center;
   width: 10rem;
 }
 .priceAndTotal {

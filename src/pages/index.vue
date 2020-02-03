@@ -3,13 +3,13 @@
 		app-section(title="Cart")
 			template(v-if="cartItems.length > 0")
 				app-button(@click="toggleCart()") {{ isCartVisible ? 'HIDE CART' : 'SHOW CART' }}
-				div(
-					v-for="(item, index) in cartItems"
-					:key="index"
-					v-show="isCartVisible"
-				)
-					template(v-if="productIndex(item.productId) !== -1")
+				div(v-show="isCartVisible")
+					div(
+						v-for="(item, index) in cartItems"
+						:key="index"
+					)
 						cart-item(
+							v-if="productIndex(item.productId) !== -1"
 							:id="item.productId"
 							:quantity="item.quantity"
 							:title="productsData[productIndex(item.productId)].title"
@@ -18,6 +18,7 @@
 							@increaseQuantity="increaseQuantity(item.productId)"
 							@decreaseQuantity="decreaseQuantity(item.productId)"
 						)
+					div Cart total: {{ `${cartTotal.value + cartTotal.penny} zł` }}
 			template(v-if="productsData.length > 0 && cartItems.length === 0")
 				div Your cart is empty.
 		app-section(title="Products")
@@ -45,6 +46,8 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 
+import { priceFormatter } from './../utils/transformations'
+
 import AppSection from './../components/AppSection.vue'
 import AppButton from './../components/AppButton.vue'
 import CartItem from './../components/CartItem.vue'
@@ -68,17 +71,30 @@ export default class PageIndex extends Vue {
   }
 
   increaseQuantity(prodId: number) {
-		this.$accessor.cart.increaseQuantity(prodId)
-		this.$accessor.cart.preserveCartState()
+    this.$accessor.cart.increaseQuantity(prodId)
+    this.$accessor.cart.preserveCartState()
   }
 
   decreaseQuantity(prodId: number) {
-		this.$accessor.cart.decreaseQuantity(prodId)
-		this.$accessor.cart.preserveCartState()
+    this.$accessor.cart.decreaseQuantity(prodId)
+    this.$accessor.cart.preserveCartState()
   }
 
   get cartItems() {
     return this.$accessor.cart.cartItems
+  }
+
+  get cartTotal() {
+    let total = 0
+    this.cartItems.map(i => {
+      const indexInProductsData = this.productsData.findIndex(
+        p => p.id === i.productId
+      )
+      if (indexInProductsData !== -1) {
+        total += i.quantity * this.productsData[indexInProductsData].price
+      }
+    })
+    return priceFormatter(total)
   }
 
   get productsData() {

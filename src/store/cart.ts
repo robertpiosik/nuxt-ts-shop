@@ -47,7 +47,7 @@ export const mutations = mutationTree(state, {
       state.cartItems[indexOfItem].quantity -= 1
     } else {
       state.cartItems.splice(indexOfItem, 1)
-		}
+    }
   }
 })
 
