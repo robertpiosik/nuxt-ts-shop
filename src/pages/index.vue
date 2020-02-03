@@ -1,11 +1,12 @@
 <template lang="pug">
 	main
 		app-section(title="Cart")
-			app-button(@click="toggleCart()") {{ isCartVisible ? 'Hide Cart' : 'Show Cart' }}
-			template(v-show="!isCartVisible")
+			template(v-if="cartItems.length > 0")
+				app-button(@click="toggleCart()") {{ isCartVisible ? 'HIDE CART' : 'SHOW CART' }}
 				div(
 					v-for="(item, index) in cartItems"
 					:key="index"
+					v-show="isCartVisible"
 				)
 					template(v-if="productIndex(item.productId) !== -1")
 						cart-item(
@@ -15,6 +16,8 @@
 							:price="productsData[productIndex(item.productId)].price"
 							:thumbnail="productsData[productIndex(item.productId)].thumbnail"
 						)
+			template(v-if="productsData.length > 0 && cartItems.length === 0")
+				div Your cart is empty.
 		app-section(title="Products")
 			template(v-if="productsData.length > 0")
 				button(@click="sortProductsDataByNameAZ()") AZ
@@ -41,14 +44,21 @@
 import { Vue, Component } from 'vue-property-decorator'
 
 import AppSection from './../components/AppSection.vue'
+import AppButton from './../components/AppButton.vue'
 import CartItem from './../components/CartItem.vue'
 import ProductsGrid from './../components/ProductsGrid.vue'
 import ProductsGridItem from './../components/ProductsGridItem.vue'
 
 @Component({
-  components: { AppSection, CartItem, ProductsGrid, ProductsGridItem }
+  components: {
+    AppSection,
+    AppButton,
+    CartItem,
+    ProductsGrid,
+    ProductsGridItem
+  }
 })
-export default class Index extends Vue {
+export default class PageIndex extends Vue {
   isCartVisible = false
 
   toggleCart() {
@@ -79,6 +89,7 @@ export default class Index extends Vue {
   addToCart(prodId: number) {
     this.$accessor.cart.addToCart(prodId)
     this.$accessor.cart.preserveCartState()
+    this.isCartVisible = true
   }
 
   productIndex(id: number) {
