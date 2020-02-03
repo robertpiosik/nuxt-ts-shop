@@ -1,8 +1,8 @@
 <template lang="pug">
 	main
 		app-section(title="Cart")
-			template(v-if="cartItems.length > 0")
-				app-button(@click="toggleCart()") {{ isCartVisible ? 'HIDE CART' : 'SHOW CART'}}{{ `${cartItemsAmount}` }}
+			template(v-if="cartItemsAmount > 0")
+				app-button(@click="toggleCart()") {{ isCartVisible ? 'HIDE CART' : 'SHOW CART'}}{{ ` (${cartItemsAmount})` }}
 				div(v-show="isCartVisible")
 					div(
 						v-for="(item, index) in cartItems"
@@ -18,7 +18,7 @@
 							@increaseQuantity="increaseQuantity(item.productId)"
 							@decreaseQuantity="decreaseQuantity(item.productId)"
 						)
-					div Cart total: {{ `${cartTotalPrice.value + cartTotalPrice.penny} zł` }}
+					div #[strong Cart total:] {{ `${cartTotalPrice.value + cartTotalPrice.penny} zł` }}
 			template(v-if="productsData.length > 0 && cartItems.length === 0")
 				div Your cart is empty.
 		app-section(title="Products")
@@ -106,12 +106,8 @@ export default class PageIndex extends Vue {
       if (indexInProductsData !== -1) {
         total += 1
       }
-    })
-    if (total === 0) {
-      return ``
-    } else {
-      return ` (${total})`
-    }
+		})
+		return total;
   }
 
   get productsData() {
