@@ -2,7 +2,7 @@
 	main
 		app-section(title="Cart")
 			template(v-if="cartItems.length > 0")
-				app-button(@click="toggleCart()") {{ isCartVisible ? 'HIDE CART' : 'SHOW CART' }} {{ `(${cartItemsAmount})` }}
+				app-button(@click="toggleCart()") {{ isCartVisible ? 'HIDE CART' : 'SHOW CART'}}{{ `${cartItemsAmount}` }}
 				div(v-show="isCartVisible")
 					div(
 						v-for="(item, index) in cartItems"
@@ -95,9 +95,9 @@ export default class PageIndex extends Vue {
       }
     })
     return priceFormatter(total)
-	}
-	
-	 get cartItemsAmount() {
+  }
+
+  get cartItemsAmount() {
     let total = 0
     this.cartItems.map(i => {
       const indexInProductsData = this.productsData.findIndex(
@@ -107,7 +107,11 @@ export default class PageIndex extends Vue {
         total += 1
       }
     })
-    return total
+    if (total === 0) {
+      return ``
+    } else {
+      return ` (${total})`
+    }
   }
 
   get productsData() {
