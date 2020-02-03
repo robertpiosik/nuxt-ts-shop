@@ -15,6 +15,8 @@
 							:title="productsData[productIndex(item.productId)].title"
 							:price="productsData[productIndex(item.productId)].price"
 							:thumbnail="productsData[productIndex(item.productId)].thumbnail"
+							@increaseQuantity="increaseQuantity(item.productId)"
+							@decreaseQuantity="decreaseQuantity(item.productId)"
 						)
 			template(v-if="productsData.length > 0 && cartItems.length === 0")
 				div Your cart is empty.
@@ -63,6 +65,16 @@ export default class PageIndex extends Vue {
 
   toggleCart() {
     this.isCartVisible = !this.isCartVisible
+  }
+
+  increaseQuantity(prodId: number) {
+		this.$accessor.cart.increaseQuantity(prodId)
+		this.$accessor.cart.preserveCartState()
+  }
+
+  decreaseQuantity(prodId: number) {
+		this.$accessor.cart.decreaseQuantity(prodId)
+		this.$accessor.cart.preserveCartState()
   }
 
   get cartItems() {

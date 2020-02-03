@@ -3,7 +3,10 @@
 		div(:class="$style.thumbnail")
 			img(:src="thumbnail")
 		div(:class="$style.title") {{ title }}
-		div(:class="$style.quantity") {{ quantity }}
+		div(:class="$style.quantity")
+			div {{ quantity }}
+			div(@click="decreaseQuantity()") -
+			div(@click="increaseQuantity()") +
 		div(:class="$style.priceAndTotal")
 			div(:class="$style.price")
 				span(:class="$style.priceValue") {{ priceFormatted.value }}
@@ -14,7 +17,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop, Emit } from 'vue-property-decorator'
 
 import { priceFormatter } from './../utils/transformations'
 
@@ -32,6 +35,12 @@ export default class CartItem extends Vue {
   get priceFormatted() {
     return priceFormatter(this.price)
   }
+
+  @Emit('increaseQuantity')
+	increaseQuantity() {}
+	
+	@Emit('decreaseQuantity')
+  decreaseQuantity() {}
 }
 </script>
 
@@ -52,8 +61,8 @@ export default class CartItem extends Vue {
   }
   width: 8rem;
   height: 8rem;
-	overflow: hidden;
-	border-radius: .5rem;
+  overflow: hidden;
+  border-radius: 0.5rem;
   @include atSmall {
     width: 10rem;
     height: 10rem;
@@ -69,14 +78,19 @@ export default class CartItem extends Vue {
   display: flex;
   align-items: center;
   margin-left: 1.5rem;
-	width: 20rem;
-	font-weight: bold;
-	color: $primary;
+  width: 20rem;
+  font-weight: bold;
+  color: $primary;
 }
 .quantity {
   display: flex;
   width: 10rem;
 }
 .priceAndTotal {
+  width: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 </style>

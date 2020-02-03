@@ -29,6 +29,25 @@ export const mutations = mutationTree(state, {
     } else {
       state.cartItems.push({ productId, quantity: 1 })
     }
+  },
+  increaseQuantity(state, productId: number) {
+    const indexOfItem = state.cartItems.findIndex(
+      i => i.productId === productId
+    )
+
+    if (indexOfItem !== -1) {
+      state.cartItems[indexOfItem].quantity += 1
+    }
+  },
+  decreaseQuantity(state, productId: number) {
+    const indexOfItem = state.cartItems.findIndex(
+      i => i.productId === productId
+    )
+    if (indexOfItem !== -1 && state.cartItems[indexOfItem].quantity >= 2) {
+      state.cartItems[indexOfItem].quantity -= 1
+    } else {
+      state.cartItems.splice(indexOfItem, 1)
+		}
   }
 })
 
