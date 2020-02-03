@@ -1,5 +1,6 @@
 <template lang="pug">
 	main
+	
 		app-section(title="Cart")
 			template(v-if="cartItemsAmount > 0")
 				app-button(@click="toggleCart()") {{ isCartVisible ? 'HIDE CART' : 'SHOW CART'}}{{ ` (${cartItemsAmount})` }}
@@ -21,6 +22,7 @@
 					div #[strong Cart total:] {{ `${cartTotalPrice.value + cartTotalPrice.penny} zł` }}
 			template(v-if="productsData.length > 0 && cartItems.length === 0")
 				div Your cart is empty.
+
 		app-section(title="Products")
 			template(v-if="productsData.length > 0")
 				button(@click="sortProductsDataByNameAZ()") AZ
