@@ -20,7 +20,7 @@ export const getters = getterTree(state, {
 })
 
 export const mutations = mutationTree(state, {
-  setProductsData(state, productsData: State['productsData']) {
+  setProductsData(state, productsData: Product[]) {
     state.productsData = productsData
   },
   sortProductsDataByPriceAsc(state) {

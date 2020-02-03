@@ -9,7 +9,9 @@
 					cart-item(
 						:id="item.productId"
 						:quantity="item.quantity"
-						:productIndex="productIndex(item.productId)"
+						:title="productsData[productIndex(item.productId)].title"
+						:price="productsData[productIndex(item.productId)].price"
+						:thumbnail="productsData[productIndex(item.productId)].thumbnail"
 					)
 		app-section(title="Products")
 			template(v-if="productsData !== null")
@@ -70,6 +72,7 @@ export default class extends Vue {
 
   addToCart(prodId: number) {
     this.$accessor.cart.addToCart(prodId)
+    this.$accessor.cart.preserveCartState()
   }
 
   productIndex(id: number) {
@@ -78,6 +81,7 @@ export default class extends Vue {
 
   mounted() {
     this.$accessor.products.getProductsData()
+    this.$accessor.cart.loadCartState()
   }
 }
 </script>
