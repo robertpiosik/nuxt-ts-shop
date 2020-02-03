@@ -8,11 +8,11 @@ interface Product {
 }
 
 interface State {
-  productsData: Array<Product> | null
+  productsData: Product[]
 }
 
 export const state = (): State => ({
-  productsData: null
+  productsData: []
 })
 
 export const getters = getterTree(state, {
@@ -24,22 +24,16 @@ export const mutations = mutationTree(state, {
     state.productsData = productsData
   },
   sortProductsDataByPriceAsc(state) {
-    if (state.productsData === null) return
-
     state.productsData = state.productsData.sort(
       (firstProd, secondProd) => firstProd.price - secondProd.price
     )
   },
   sortProductsDataByPriceDesc(state) {
-    if (state.productsData === null) return
-
     state.productsData = state.productsData.sort(
       (firstProd, secondProd) => secondProd.price - firstProd.price
     )
   },
   sortProductsDataByNameAZ(state) {
-    if (state.productsData === null) return
-
     state.productsData = state.productsData.sort((firstProd, secondProd) => {
       const firstProdTitle = firstProd.title.toUpperCase()
       const secondProdTitle = secondProd.title.toUpperCase()
@@ -50,8 +44,6 @@ export const mutations = mutationTree(state, {
     })
   },
   sortProductsDataByNameZA(state) {
-    if (state.productsData === null) return
-
     state.productsData = state.productsData.sort((firstProd, secondProd) => {
       const firstProdTitle = firstProd.title.toUpperCase()
       const secondProdTitle = secondProd.title.toUpperCase()

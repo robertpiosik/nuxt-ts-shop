@@ -8,7 +8,6 @@
 		v-bind="$attrs"
 	)
 		slot
-
 </template>
 
 <script lang="ts">

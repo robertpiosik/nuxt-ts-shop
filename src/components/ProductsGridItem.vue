@@ -8,11 +8,11 @@
 			span(:class="$style.pricePenny") {{ penny }}
 			span {{ ` zł` }}
 		div(:class="$style.addToCart")
-			app-button() ADD TO CART
+			app-button(@click="addToCart()") ADD TO CART
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
+import { Vue, Component, Prop, Watch, Emit } from 'vue-property-decorator'
 
 import AppButton from './../components/AppButton.vue'
 
@@ -34,6 +34,9 @@ export default class extends Vue {
     this.value = value
     this.penny = penny
   }
+
+	@Emit('addToCart')
+	addToCart() {}
 }
 </script>
 

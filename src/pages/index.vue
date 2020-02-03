@@ -19,6 +19,7 @@
 						:title="product.title"
 						:price="product.price"
 						:thumbnail="product.thumbnail"
+						@addToCart="addToCart(product.id)"
 					)
 			template(v-else)
 				div loading
@@ -38,18 +39,22 @@ export default class extends Vue {
     return this.$accessor.products.productsData
   }
 
-	sortProductsDataByPriceAsc() {
-		this.$accessor.products.sortProductsDataByPriceAsc()
-	}
-	sortProductsDataByPriceDesc() {
-		this.$accessor.products.sortProductsDataByPriceDesc()
-	}
-	sortProductsDataByNameAZ() {
-		this.$accessor.products.sortProductsDataByNameAZ()
-	}
-	sortProductsDataByNameZA() {
-		this.$accessor.products.sortProductsDataByNameZA()
-	}
+  sortProductsDataByPriceAsc() {
+    this.$accessor.products.sortProductsDataByPriceAsc()
+  }
+  sortProductsDataByPriceDesc() {
+    this.$accessor.products.sortProductsDataByPriceDesc()
+  }
+  sortProductsDataByNameAZ() {
+    this.$accessor.products.sortProductsDataByNameAZ()
+  }
+  sortProductsDataByNameZA() {
+    this.$accessor.products.sortProductsDataByNameZA()
+  }
+
+  addToCart(prodId: number) {
+    this.$accessor.cart.addToCart(prodId)
+  }
 
   mounted() {
     this.$accessor.products.getProductsData()
