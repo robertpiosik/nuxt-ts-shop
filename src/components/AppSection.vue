@@ -11,7 +11,7 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
 
 @Component
-export default class extends Vue {
+export default class AppSection extends Vue {
   @Prop(String) readonly title?: string
 }
 </script>
@@ -24,6 +24,10 @@ export default class extends Vue {
   @include wrapper;
 }
 .title {
+  margin-bottom: 1rem;
+  @include atSmall {
+    margin-bottom: 2rem;
+  }
   & h2 {
     @include h2;
   }

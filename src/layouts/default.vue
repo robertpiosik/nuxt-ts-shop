@@ -2,10 +2,10 @@
 	div
 		header(:class="$style.header")
 			div(:class="$style.headerWrapper")
-				div(:class="$style.headerText") Nuxt.js &amp; TypeScript Example App
+				div(:class="$style.headerText") Type-Safe Nuxt.js Example App
 		nuxt
 		footer(:class="$style.footer")
-				div(:class="$style.footerReminder") Stay hydrated 💧
+			div(:class="$style.footerReminder") Stay hydrated 💧and type-safe 👀
 </template>
 
 <style lang="scss" module>
@@ -16,9 +16,9 @@
   @include wrapper;
 }
 .headerText {
-	color: white;
-	font-weight: bold;
-	padding: 1rem 0;
+  color: white;
+  font-weight: bold;
+  padding: 1rem 0;
 }
 .footer {
   margin: 8rem 0 6rem 0;

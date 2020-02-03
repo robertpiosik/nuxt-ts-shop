@@ -6,7 +6,7 @@
 <script lang="ts">
 import { Vue } from 'vue-property-decorator'
 
-export default class extends Vue {}
+export default class ProductsGrid extends Vue {}
 </script>
 
 <style lang="scss" module>

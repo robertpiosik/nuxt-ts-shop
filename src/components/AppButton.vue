@@ -14,7 +14,7 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
 
 @Component
-export default class extends Vue {
+export default class AppButton extends Vue {
   @Prop(String) readonly to?: string
   @Prop(String) readonly href?: string
   @Prop({ type: String, default: 'normal' }) readonly size!:

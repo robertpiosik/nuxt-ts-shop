@@ -19,7 +19,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 import { priceFormatter } from './../utils/transformations'
 
 @Component
-export default class extends Vue {
+export default class CartItem extends Vue {
   @Prop({ type: Number, required: true }) readonly id!: number
   @Prop({ type: Number, required: true }) readonly quantity!: number
   @Prop({ type: String, required: true }) readonly title!: string

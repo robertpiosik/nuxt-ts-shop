@@ -1,21 +1,22 @@
 <template lang="pug">
 	main
 		app-section(title="Cart")
-			div(
-				v-for="(item, index) in cartItems"
-				:key="index"
-			)
-				template(v-if="productIndex(item.productId) !== -1")
-					cart-item(
-						:id="item.productId"
-						:quantity="item.quantity"
-						:title="productsData[productIndex(item.productId)].title"
-						:price="productsData[productIndex(item.productId)].price"
-						:thumbnail="productsData[productIndex(item.productId)].thumbnail"
-					)
+			app-button(@click="toggleCart()") {{ isCartVisible ? 'Hide Cart' : 'Show Cart' }}
+			template(v-show="!isCartVisible")
+				div(
+					v-for="(item, index) in cartItems"
+					:key="index"
+				)
+					template(v-if="productIndex(item.productId) !== -1")
+						cart-item(
+							:id="item.productId"
+							:quantity="item.quantity"
+							:title="productsData[productIndex(item.productId)].title"
+							:price="productsData[productIndex(item.productId)].price"
+							:thumbnail="productsData[productIndex(item.productId)].thumbnail"
+						)
 		app-section(title="Products")
-			template(v-if="productsData !== null")
-				br
+			template(v-if="productsData.length > 0")
 				button(@click="sortProductsDataByNameAZ()") AZ
 				button(@click="sortProductsDataByNameZA()") ZA
 				button(@click="sortProductsDataByPriceAsc()") Price ASC
@@ -33,7 +34,7 @@
 						@addToCart="addToCart(product.id)"
 					)
 			template(v-else)
-				div loading
+				div Loading...
 </template>
 
 <script lang="ts">
@@ -47,7 +48,13 @@ import ProductsGridItem from './../components/ProductsGridItem.vue'
 @Component({
   components: { AppSection, CartItem, ProductsGrid, ProductsGridItem }
 })
-export default class extends Vue {
+export default class Index extends Vue {
+  isCartVisible = false
+
+  toggleCart() {
+    this.isCartVisible = !this.isCartVisible
+  }
+
   get cartItems() {
     return this.$accessor.cart.cartItems
   }

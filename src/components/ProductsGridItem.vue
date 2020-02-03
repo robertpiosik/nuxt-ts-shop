@@ -19,7 +19,7 @@ import AppButton from './../components/AppButton.vue'
 import { priceFormatter } from '../utils/transformations'
 
 @Component({ components: { AppButton } })
-export default class extends Vue {
+export default class ProductsGridItem extends Vue {
   @Prop({ type: Number, required: true }) readonly id!: number
   @Prop({ type: String, required: true }) readonly title!: string
   @Prop({ type: Number, required: true }) readonly price!: number
