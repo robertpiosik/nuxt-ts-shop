@@ -39,6 +39,7 @@ export default class CartItem extends Vue {
 .container {
   display: flex;
   flex-direction: column;
+  margin: 1.5rem 0;
   @include atSmall {
     flex-direction: row;
   }
@@ -51,7 +52,8 @@ export default class CartItem extends Vue {
   }
   width: 8rem;
   height: 8rem;
-  overflow: hidden;
+	overflow: hidden;
+	border-radius: .5rem;
   @include atSmall {
     width: 10rem;
     height: 10rem;
@@ -67,7 +69,9 @@ export default class CartItem extends Vue {
   display: flex;
   align-items: center;
   margin-left: 1.5rem;
-  width: 20rem;
+	width: 20rem;
+	font-weight: bold;
+	color: $primary;
 }
 .quantity {
   display: flex;

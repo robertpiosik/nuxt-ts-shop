@@ -103,9 +103,3 @@ export default class PageIndex extends Vue {
   }
 }
 </script>
-
-<style lang="scss" module>
-.wrapper {
-  @include wrapper;
-}
-</style>
