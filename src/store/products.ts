@@ -16,7 +16,7 @@ export const state = (): State => ({
 })
 
 export const getters = getterTree(state, {
-  amountOfProducts: state => state.productsData?.length
+  getProductsAmount: state => state.productsData?.length
 })
 
 export const mutations = mutationTree(state, {

@@ -22,10 +22,8 @@ export const mutations = mutationTree(state, {
     )
 
     if (indexOfCurrentlyAddedProduct !== -1) {
-      // item found
       state.cartItems[indexOfCurrentlyAddedProduct].quantity += 1
     } else {
-      // item not found
       state.cartItems.push({ productId, quantity: 1 })
     }
   }
