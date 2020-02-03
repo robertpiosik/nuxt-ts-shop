@@ -90,6 +90,7 @@ export default class PageIndex extends Vue {
     this.$accessor.cart.addToCart(prodId)
     this.$accessor.cart.preserveCartState()
     this.isCartVisible = true
+    document.documentElement.scrollTop = 0
   }
 
   productIndex(id: number) {
