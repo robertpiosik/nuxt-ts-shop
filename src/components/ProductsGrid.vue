@@ -6,5 +6,11 @@
 <script lang="ts">
 import { Vue } from 'vue-property-decorator'
 
-export default Vue.extend({})
+export default class extends Vue {
+
+}
 </script>
+
+<style lang="scss" module>
+
+</style>

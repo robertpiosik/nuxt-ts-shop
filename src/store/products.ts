@@ -2,9 +2,9 @@ import { getterTree, mutationTree, actionTree } from 'nuxt-typed-vuex'
 
 interface Product {
   id: number
-  thumbnail: string
   title: string
   price: number
+  thumbnail: string
 }
 
 interface State {
@@ -16,13 +16,7 @@ export const state = (): State => ({
 })
 
 export const getters = getterTree(state, {
-  amountOfProducts: state => {
-    if (state.productsData === null) {
-      return 0
-    } else {
-      return state.productsData.length + 1
-    }
-  }
+  amountOfProducts: state => state.productsData?.length
 })
 
 export const mutations = mutationTree(state, {
@@ -62,8 +56,8 @@ export const mutations = mutationTree(state, {
       const firstProdTitle = firstProd.title.toUpperCase()
       const secondProdTitle = secondProd.title.toUpperCase()
 
-      if (firstProdTitle < secondProdTitle) return -1
-      if (firstProdTitle > secondProdTitle) return 1
+      if (firstProdTitle > secondProdTitle) return -1
+      if (firstProdTitle < secondProdTitle) return 1
       return 0
     })
   }

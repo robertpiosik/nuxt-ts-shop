@@ -47,7 +47,10 @@ const config: Configuration = {
   css: ['normalize.css/normalize.css', 'assets/css/style.css'],
 
   styleResources: {
-    scss: ['assets/scss/mixins.scss']
+    scss: [
+			'assets/scss/mixins.scss'
+			,'assets/scss/variables.scss'
+		]
   },
 
   modules: ['@nuxtjs/pwa', '@nuxtjs/style-resources'],
