@@ -8,15 +8,8 @@
 			div(@click="decreaseQuantity()") -
 			div(@click="increaseQuantity()") +
 		div(:class="$style.priceAndTotal")
-			div(:class="$style.price")
-				span(:class="$style.priceValue") {{ priceFormatted.value }}
-				span(:class="$style.pricePenny") {{ priceFormatted.penny }}
-			div(
-				v-if="price !== price * quantity"
-				:class="$style.total"
-			)
-				span(:class="$style.priceValue") {{ totalFormatted.value }}
-				span(:class="$style.pricePenny") {{ totalFormatted.penny }}
+			div {{ `${priceFormatted.value + priceFormatted.penny} zł` }}
+			div(v-if="price !== price * quantity") {{ `${totalFormatted.value + totalFormatted.penny} zł` }}
 </template>
 
 <script lang="ts">
@@ -87,9 +80,9 @@ export default class CartItem extends Vue {
   color: $primary;
 }
 .quantity {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 10rem;
 }
 .priceAndTotal {

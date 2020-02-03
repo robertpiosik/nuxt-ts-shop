@@ -2,7 +2,7 @@
 	main
 		app-section(title="Cart")
 			template(v-if="cartItems.length > 0")
-				app-button(@click="toggleCart()") {{ isCartVisible ? 'HIDE CART' : 'SHOW CART' }}
+				app-button(@click="toggleCart()") {{ isCartVisible ? 'HIDE CART' : 'SHOW CART' }} {{ `(${cartItemsAmount})` }}
 				div(v-show="isCartVisible")
 					div(
 						v-for="(item, index) in cartItems"
@@ -18,7 +18,7 @@
 							@increaseQuantity="increaseQuantity(item.productId)"
 							@decreaseQuantity="decreaseQuantity(item.productId)"
 						)
-					div Cart total: {{ `${cartTotal.value + cartTotal.penny} zł` }}
+					div Cart total: {{ `${cartTotalPrice.value + cartTotalPrice.penny} zł` }}
 			template(v-if="productsData.length > 0 && cartItems.length === 0")
 				div Your cart is empty.
 		app-section(title="Products")
@@ -84,7 +84,7 @@ export default class PageIndex extends Vue {
     return this.$accessor.cart.cartItems
   }
 
-  get cartTotal() {
+  get cartTotalPrice() {
     let total = 0
     this.cartItems.map(i => {
       const indexInProductsData = this.productsData.findIndex(
@@ -95,6 +95,19 @@ export default class PageIndex extends Vue {
       }
     })
     return priceFormatter(total)
+	}
+	
+	 get cartItemsAmount() {
+    let total = 0
+    this.cartItems.map(i => {
+      const indexInProductsData = this.productsData.findIndex(
+        p => p.id === i.productId
+      )
+      if (indexInProductsData !== -1) {
+        total += 1
+      }
+    })
+    return total
   }
 
   get productsData() {
