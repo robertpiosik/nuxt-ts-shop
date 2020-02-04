@@ -44,7 +44,7 @@
 						@addToCart="addToCart(product.id)"
 					)
 			template(v-else)
-				div Loading...
+				div Fetching data...
 </template>
 
 <script lang="ts">
