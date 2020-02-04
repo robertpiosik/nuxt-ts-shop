@@ -9,7 +9,7 @@ const wrapper = mount(ProductsGrid, {
 
 describe('ProductsGrid', () => {
   describe('GENERAL', () => {
-    it('should match snapshot', () => {
+    it('should match a snapshot', () => {
       expect(wrapper).toMatchSnapshot()
     })
     it('should be a Vue instance', () => {
