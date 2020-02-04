@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CartItem GENERAL should match a snapshot 1`] = `
+exports[`Component: CartItem GENERAL should match a snapshot 1`] = `
 <div class="container">
   <div class="thumbnail"><img src="someUrl"></div>
   <div class="title">Water</div>

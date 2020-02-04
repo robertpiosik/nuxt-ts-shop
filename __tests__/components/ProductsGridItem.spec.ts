@@ -15,7 +15,7 @@ const wrapper = mount(ProductsGridItem, {
   }
 })
 
-describe('ProductsGrid', () => {
+describe('Component: ProductsGrid', () => {
   describe('GENERAL', () => {
     it('should match a snapshot', () => {
       expect(wrapper).toMatchSnapshot()

@@ -18,7 +18,7 @@ const wrapper = mount(CartItem, {
   }
 })
 
-describe('CartItem', () => {
+describe('Component: CartItem', () => {
   describe('GENERAL', () => {
     it('should match a snapshot', () => {
       expect(wrapper).toMatchSnapshot()
