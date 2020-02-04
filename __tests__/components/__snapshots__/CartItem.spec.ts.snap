@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CartItem GENERAL should match a snapshot 1`] = `
+<div class="container">
+  <div class="thumbnail"><img src="someUrl"></div>
+  <div class="title">Water</div>
+  <div class="quantity">
+    <div>2</div>
+    <div>-</div>
+    <div>+</div>
+  </div>
+  <div class="priceAndTotal">
+    <div>1,2 zł</div>
+    <div>2,4 zł</div>
+  </div>
+</div>
+`;

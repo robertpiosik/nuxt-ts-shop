@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import ProductsGrid from './../src/components/ProductsGrid.vue'
+import ProductsGrid from './../../src/components/ProductsGrid.vue'
 
 const slotContent = 'slot content'
 

@@ -11,11 +11,10 @@
 					)
 						cart-item(
 							v-if="productIndex(item.productId) !== -1"
-							:id="item.productId"
-							:quantity="item.quantity"
 							:title="productsData[productIndex(item.productId)].title"
 							:price="productsData[productIndex(item.productId)].price"
 							:thumbnail="productsData[productIndex(item.productId)].thumbnail"
+							:quantity="item.quantity"
 							@increaseQuantity="increaseQuantity(item.productId)"
 							@decreaseQuantity="decreaseQuantity(item.productId)"
 						)
