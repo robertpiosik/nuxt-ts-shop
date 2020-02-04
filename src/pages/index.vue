@@ -37,7 +37,6 @@
 					products-grid-item(
 						v-for="(product, index) in productsData"
 						:key="index"
-						:id="product.id"
 						:title="product.title"
 						:price="product.price"
 						:thumbnail="product.thumbnail"

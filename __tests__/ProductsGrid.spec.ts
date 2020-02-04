@@ -1,16 +1,24 @@
 import { mount } from '@vue/test-utils'
 import ProductsGrid from './../src/components/ProductsGrid.vue'
 
-const wrapper = mount(ProductsGrid)
+const slotContent = 'slot content'
+
+const wrapper = mount(ProductsGrid, {
+  slots: { default: slotContent }
+})
 
 describe('ProductsGrid', () => {
   describe('GENERAL', () => {
-    it('mounts', () => {
+    it('should match snapshot', () => {
+      expect(wrapper).toMatchSnapshot()
+    })
+    it('should be a Vue instance', () => {
       expect(wrapper.isVueInstance()).toBeTruthy()
     })
   })
-  describe('PROPS', () => {
-  })
   describe('SLOTS', () => {
+    it('should render given slot value and nothing else', () => {
+      expect(wrapper.text()).toBe(slotContent)
+    })
   })
 })
