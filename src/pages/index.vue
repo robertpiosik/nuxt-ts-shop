@@ -25,10 +25,12 @@
 
 		app-section(title="Products")
 			template(v-if="productsData.length > 0")
-				button(@click="sortProductsDataByNameAZ()") AZ
-				button(@click="sortProductsDataByNameZA()") ZA
-				button(@click="sortProductsDataByPriceAsc()") Price ASC
-				button(@click="sortProductsDataByPriceDesc()") Price DESC
+				select(v-model="selectedSortingOption")
+					option(disabled value="") Select sorting option
+					option(value="byNameAZ") Sort by name AZ
+					option(value="byNameZA") Sort by name ZA
+					option(value="byPriceAsc") Sort by price ASC
+					option(value="byPriceDesc") Sort by price DESC
 				br
 				br
 				products-grid()
@@ -46,7 +48,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component, Watch } from 'vue-property-decorator'
 
 import { priceFormatter } from './../utils/transformations'
 
@@ -55,6 +57,13 @@ import AppButton from './../components/AppButton.vue'
 import CartItem from './../components/CartItem.vue'
 import ProductsGrid from './../components/ProductsGrid.vue'
 import ProductsGridItem from './../components/ProductsGridItem.vue'
+
+type SortingOptions =
+  | ''
+  | 'byNameAZ'
+  | 'byNameZA'
+  | 'byPriceAsc'
+  | 'byPriceDesc'
 
 @Component({
   components: {
@@ -67,6 +76,7 @@ import ProductsGridItem from './../components/ProductsGridItem.vue'
 })
 export default class PageIndex extends Vue {
   isCartVisible = false
+  selectedSortingOption = ''
 
   toggleCart() {
     this.isCartVisible = !this.isCartVisible
@@ -108,25 +118,25 @@ export default class PageIndex extends Vue {
       if (indexInProductsData !== -1) {
         total += 1
       }
-		})
-		return total;
+    })
+    return total
   }
 
   get productsData() {
     return this.$accessor.products.productsData
   }
 
-  sortProductsDataByPriceAsc() {
-    this.$accessor.products.sortProductsDataByPriceAsc()
-  }
-  sortProductsDataByPriceDesc() {
-    this.$accessor.products.sortProductsDataByPriceDesc()
-  }
-  sortProductsDataByNameAZ() {
-    this.$accessor.products.sortProductsDataByNameAZ()
-  }
-  sortProductsDataByNameZA() {
-    this.$accessor.products.sortProductsDataByNameZA()
+  @Watch('selectedSortingOption')
+  onSelectedSortingOptionChange(val: SortingOptions, oldVal: string) {
+    if (val === 'byNameAZ') {
+      this.$accessor.products.sortProductsDataByNameAZ()
+    } else if (val === 'byNameZA') {
+      this.$accessor.products.sortProductsDataByNameZA()
+    } else if (val === 'byPriceAsc') {
+      this.$accessor.products.sortProductsDataByPriceAsc()
+    } else if (val === 'byPriceDesc') {
+      this.$accessor.products.sortProductsDataByPriceDesc()
+    }
   }
 
   addToCart(prodId: number) {
