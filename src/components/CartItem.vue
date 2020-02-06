@@ -1,8 +1,9 @@
 <template lang="pug">
 	div(:class="$style.container")
-		div(:class="$style.thumbnail")
-			img(:src="thumbnail")
-		div(:class="$style.title") {{ title }}
+		div(:class="$style.thumbnailAndTitle")
+			div(:class="$style.thumbnail")
+				img(:src="thumbnail")
+			div(:class="$style.title") {{ title }}
 		div(:class="$style.quantity")
 			div {{ quantity }}
 			div(@click="decreaseQuantity()") -
@@ -26,8 +27,8 @@ export default class CartItem extends Vue {
 
   get priceFormatted() {
     return priceFormatter(this.price)
-	}
-	
+  }
+
   get totalFormatted() {
     return priceFormatter(this.price * this.quantity)
   }
@@ -43,22 +44,36 @@ export default class CartItem extends Vue {
 <style lang="scss" module>
 .container {
   display: grid;
+  grid-gap: 1.5rem;
   margin: 1.5rem 0;
+  max-width: 70rem;
+  @include toSmall {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+  @include atSmall {
+    grid-template-columns: 4fr 1fr 1fr;
+  }
+}
+.thumbnailAndTitle {
+  @include toSmall {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+
+  display: grid;
+  grid-template-columns: 8rem auto;
+  grid-template-rows: 8rem;
+  grid-gap: 1.5rem;
+  @include atSmall {
+    grid-template-columns: 10rem auto;
+    grid-template-rows: 10rem;
+  }
 }
 .thumbnail {
   position: relative;
-  @include toExtraSmall {
-    width: 7rem;
-    height: 7rem;
-  }
-  width: 8rem;
-  height: 8rem;
   overflow: hidden;
   border-radius: 0.5rem;
-  @include atSmall {
-    width: 10rem;
-    height: 10rem;
-  }
   & img {
     width: 100%;
     height: 100%;
@@ -69,8 +84,6 @@ export default class CartItem extends Vue {
 .title {
   display: flex;
   align-items: center;
-  margin-left: 1.5rem;
-  width: 20rem;
   font-weight: bold;
   color: $primary;
 }
