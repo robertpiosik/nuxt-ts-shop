@@ -123,9 +123,10 @@ export default class CartItem extends Vue {
   grid-row-start: 1;
   grid-row-end: 3;
 
-  justify-self: start;
+  justify-self: end;
   align-self: center;
-  font-weight: bold;
+	font-weight: bold;
+	margin-right: 1rem;
 }
 .quantityButton {
   justify-self: center;
@@ -147,9 +148,8 @@ export default class CartItem extends Vue {
   }
 }
 .priceAndTotal {
-  width: 20rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
 }
 </style>
