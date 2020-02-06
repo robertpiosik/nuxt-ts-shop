@@ -18,18 +18,12 @@
 .headerText {
   color: white;
   font-weight: bold;
-  padding: 0.8rem 0;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
   @include atSmall {
-    font-size: 1.8rem;
-    padding: 1rem 0;
-  }
-  @include atMedium {
+    height: 5rem;
     font-size: 2rem;
-    padding: 1.1rem 0;
-  }
-  @include atLarge {
-    font-size: 2.2rem;
-    padding: 1.2rem 0;
   }
 }
 .footer {

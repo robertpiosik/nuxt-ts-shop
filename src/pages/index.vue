@@ -5,11 +5,10 @@
 			template(v-if="cartItemsAmount > 0")
 				app-button(@click="toggleCart()") {{ isCartVisible ? `HIDE CART (${cartItemsAmount})` : `SHOW CART (${cartItemsAmount})` }}
 				div(v-show="isCartVisible")
-					div(
-						v-for="(item, index) in cartItems"
-						:key="index"
-					)
+					div
 						cart-item(
+							v-for="(item, index) in cartItems"
+							:key="index"
 							v-if="productIndex(item.productId) !== -1"
 							:title="productsData[productIndex(item.productId)].title"
 							:price="productsData[productIndex(item.productId)].price"

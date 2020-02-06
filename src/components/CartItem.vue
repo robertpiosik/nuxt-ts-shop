@@ -6,7 +6,7 @@
 				img(:src="thumbnail")
 			div(:class="$style.titleAndRemove")
 				div(:class="$style.title") {{ title }}
-				div(:class="$style.remove" role="button" @click="removeItem()") &#10005 Remove from cart
+				div(:class="$style.remove" role="button" @click="removeItem()") &#10005 Remove
 
 		div(:class="$style.quantity")
 			div(:class="$style.quantityAmount") {{ quantity }}
@@ -56,9 +56,15 @@ export default class CartItem extends Vue {
   grid-gap: 1.5rem;
   margin: 1.5rem 0;
   max-width: 65rem;
+	padding-bottom: 1.5rem;
+	border-bottom: .1rem solid rgba(black, 0.1);
+	&:last-of-type {
+		border-bottom: none;
+		margin-bottom: 0;
+	}
   @include toSmall {
     grid-template-columns: 8rem 1fr;
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(2, auto);
   }
   @include atSmall {
     grid-template-columns: 4fr 1fr 1fr;
@@ -104,7 +110,7 @@ export default class CartItem extends Vue {
 .remove {
   font-size: 1.2rem;
   font-weight: bold;
-	color: rgba(black, 0.2);
+	color: rgba(black, 0.3);
 	cursor: pointer;
 	padding: .5rem 1rem .5rem 0;
   &:hover {
@@ -138,7 +144,6 @@ export default class CartItem extends Vue {
   justify-content: center;
   border: 0.1rem solid rgba(black, 0.1);
   border-radius: 0.5rem;
-  font-size: 1.8rem;
   font-weight: bold;
   &:hover {
     background: rgba(black, 0.1);
