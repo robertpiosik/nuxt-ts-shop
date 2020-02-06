@@ -19,13 +19,16 @@ export default class AppSection extends Vue {
 <style lang="scss" module>
 .section {
   margin: 4rem 0;
+  @include atMedium {
+    margin: 6rem 0;
+  }
 }
 .wrapper {
   @include wrapper;
 }
 .title {
   margin-bottom: 1rem;
-  @include atSmall {
+  @include atMedium {
     margin-bottom: 2rem;
   }
   & h2 {
