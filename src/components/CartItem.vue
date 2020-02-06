@@ -24,12 +24,12 @@ export default class CartItem extends Vue {
   @Prop({ type: String, required: true }) readonly thumbnail!: string
   @Prop({ type: Number, required: true }) readonly quantity!: number
 
-  get totalFormatted() {
-    return priceFormatter(this.price * this.quantity)
-  }
-
   get priceFormatted() {
     return priceFormatter(this.price)
+	}
+	
+  get totalFormatted() {
+    return priceFormatter(this.price * this.quantity)
   }
 
   @Emit('increaseQuantity')
@@ -42,12 +42,8 @@ export default class CartItem extends Vue {
 
 <style lang="scss" module>
 .container {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   margin: 1.5rem 0;
-  @include atSmall {
-    flex-direction: row;
-  }
 }
 .thumbnail {
   position: relative;
