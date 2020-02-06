@@ -17,6 +17,7 @@
 							:quantity="item.quantity"
 							@increaseQuantity="increaseQuantity(item.productId)"
 							@decreaseQuantity="decreaseQuantity(item.productId)"
+							@removeItem="removeItem(item.productId)"
 						)
 					div Cart total: #[strong {{ `${cartTotalPrice.value + cartTotalPrice.penny} zł` }}]
 			template(v-if="productsData.length > 0 && cartItems.length === 0")
@@ -87,6 +88,11 @@ export default class PageIndex extends Vue {
 
   decreaseQuantity(prodId: number) {
     this.$accessor.cart.decreaseQuantity(prodId)
+    this.$accessor.cart.preserveCartState()
+  }
+
+  removeItem(prodId: number) {
+    this.$accessor.cart.removeItem(prodId)
     this.$accessor.cart.preserveCartState()
   }
 

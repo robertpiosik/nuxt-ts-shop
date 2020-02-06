@@ -38,7 +38,8 @@ figure {
 }
 
 button {
-  background: none;
+	background: none;
+	padding: 0;
 }
 
 button,

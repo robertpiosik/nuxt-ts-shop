@@ -23,7 +23,6 @@ export const mutations = mutationTree(state, {
     const indexOfCurrentlyAddedProduct = state.cartItems.findIndex(
       i => i.productId === productId
     )
-
     if (indexOfCurrentlyAddedProduct !== -1) {
       state.cartItems[indexOfCurrentlyAddedProduct].quantity += 1
     } else {
@@ -34,7 +33,6 @@ export const mutations = mutationTree(state, {
     const indexOfItem = state.cartItems.findIndex(
       i => i.productId === productId
     )
-
     if (indexOfItem !== -1) {
       state.cartItems[indexOfItem].quantity += 1
     }
@@ -46,6 +44,14 @@ export const mutations = mutationTree(state, {
     if (indexOfItem !== -1 && state.cartItems[indexOfItem].quantity >= 2) {
       state.cartItems[indexOfItem].quantity -= 1
     } else {
+      state.cartItems.splice(indexOfItem, 1)
+    }
+  },
+  removeItem(state, productId: number) {
+    const indexOfItem = state.cartItems.findIndex(
+      i => i.productId === productId
+    )
+    if (indexOfItem !== -1) {
       state.cartItems.splice(indexOfItem, 1)
     }
   }

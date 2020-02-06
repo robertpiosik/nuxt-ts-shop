@@ -1,13 +1,18 @@
 <template lang="pug">
 	div(:class="$style.container")
+
 		div(:class="$style.thumbnailAndTitle")
 			div(:class="$style.thumbnail")
 				img(:src="thumbnail")
-			div(:class="$style.title") {{ title }}
+			div(:class="$style.titleAndRemove")
+				div(:class="$style.title") {{ title }}
+				div(:class="$style.remove" role="button" @click="removeItem()") &#10005 Remove from cart
+
 		div(:class="$style.quantity")
 			div(:class="$style.quantityAmount") {{ quantity }}
 			button(:class="$style.quantityButton" @click="decreaseQuantity()") -
 			button(:class="$style.quantityButton" @click="increaseQuantity()") +
+
 		div(:class="$style.priceAndTotal")
 			div(v-if="price !== price * quantity") {{ `${priceFormatted.value + priceFormatted.penny} zł` }}
 			div(v-if="price === price * quantity") #[strong {{ `${priceFormatted.value + priceFormatted.penny} zł` }}]
@@ -39,6 +44,9 @@ export default class CartItem extends Vue {
 
   @Emit('decreaseQuantity')
   decreaseQuantity() {}
+
+  @Emit('removeItem')
+  removeItem() {}
 }
 </script>
 
@@ -82,14 +90,29 @@ export default class CartItem extends Vue {
     object-fit: cover;
   }
 }
+.titleAndRemove {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 .title {
   display: flex;
   align-items: center;
   font-weight: bold;
   color: $primary;
 }
+.remove {
+  font-size: 1.2rem;
+  font-weight: bold;
+	color: rgba(black, 0.2);
+	cursor: pointer;
+	padding: .5rem 1rem .5rem 0;
+  &:hover {
+    color: red;
+  }
+}
 .quantity {
-	justify-self: end;
+  justify-self: end;
 
   display: grid;
   grid-gap: 0.5rem;
@@ -100,12 +123,12 @@ export default class CartItem extends Vue {
   grid-row-start: 1;
   grid-row-end: 3;
 
-	justify-self: start;
-	align-self: center;
-	font-weight: bold;
+  justify-self: start;
+  align-self: center;
+  font-weight: bold;
 }
 .quantityButton {
-	justify-self: center;
+  justify-self: center;
 
   width: 3rem;
   height: 3rem;
