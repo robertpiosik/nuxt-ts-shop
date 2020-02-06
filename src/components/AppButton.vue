@@ -37,10 +37,6 @@ export default class AppButton extends Vue {
 
 <style lang="scss" module>
 .button {
-  @include toExtraSmall {
-    font-size: 1.4rem;
-    padding: 0.6rem 1rem;
-  }
   background: $primary;
   color: white;
   font-weight: 600;

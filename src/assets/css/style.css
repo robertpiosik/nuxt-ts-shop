@@ -37,6 +37,10 @@ figure {
   padding: 0;
 }
 
+button {
+  background: none;
+}
+
 button,
 button:hover {
   cursor: pointer;

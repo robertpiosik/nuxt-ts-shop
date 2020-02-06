@@ -18,7 +18,7 @@
 							@increaseQuantity="increaseQuantity(item.productId)"
 							@decreaseQuantity="decreaseQuantity(item.productId)"
 						)
-					div #[strong Cart total:] {{ `${cartTotalPrice.value + cartTotalPrice.penny} zł` }}
+					div Cart total: #[strong {{ `${cartTotalPrice.value + cartTotalPrice.penny} zł` }}]
 			template(v-if="productsData.length > 0 && cartItems.length === 0")
 				div Your cart is empty.
 

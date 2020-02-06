@@ -5,12 +5,13 @@
 				img(:src="thumbnail")
 			div(:class="$style.title") {{ title }}
 		div(:class="$style.quantity")
-			div {{ quantity }}
-			div(@click="decreaseQuantity()") -
-			div(@click="increaseQuantity()") +
+			div(:class="$style.quantityAmount") {{ quantity }}
+			button(:class="$style.quantityButton" @click="decreaseQuantity()") -
+			button(:class="$style.quantityButton" @click="increaseQuantity()") +
 		div(:class="$style.priceAndTotal")
-			div {{ `${priceFormatted.value + priceFormatted.penny} zł` }}
-			div(v-if="price !== price * quantity") {{ `${totalFormatted.value + totalFormatted.penny} zł` }}
+			div(v-if="price !== price * quantity") {{ `${priceFormatted.value + priceFormatted.penny} zł` }}
+			div(v-if="price === price * quantity") #[strong {{ `${priceFormatted.value + priceFormatted.penny} zł` }}]
+			div(v-if="price !== price * quantity") #[strong {{ `${totalFormatted.value + totalFormatted.penny} zł` }}]
 </template>
 
 <script lang="ts">
@@ -46,9 +47,9 @@ export default class CartItem extends Vue {
   display: grid;
   grid-gap: 1.5rem;
   margin: 1.5rem 0;
-  max-width: 70rem;
+  max-width: 65rem;
   @include toSmall {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 8rem 1fr;
     grid-template-rows: repeat(2, 1fr);
   }
   @include atSmall {
@@ -88,16 +89,44 @@ export default class CartItem extends Vue {
   color: $primary;
 }
 .quantity {
+	justify-self: end;
+
+  display: grid;
+  grid-gap: 0.5rem;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+.quantityAmount {
+  grid-row-start: 1;
+  grid-row-end: 3;
+
+	justify-self: start;
+	align-self: center;
+	font-weight: bold;
+}
+.quantityButton {
+	justify-self: center;
+
+  width: 3rem;
+  height: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 10rem;
+  border: 0.1rem solid rgba(black, 0.1);
+  border-radius: 0.5rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  &:hover {
+    background: rgba(black, 0.1);
+  }
+  &:first-of-type {
+    align-self: end;
+  }
 }
 .priceAndTotal {
   width: 20rem;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  align-items: center;
 }
 </style>
