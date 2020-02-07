@@ -25,6 +25,10 @@ h6 {
   margin: 0;
 }
 
+a {
+	color: #0074c1;
+}
+
 textarea,
 select,
 button,

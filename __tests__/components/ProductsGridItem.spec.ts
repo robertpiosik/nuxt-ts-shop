@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import ProductsGridItem from './../../src/components/ProductsGridItem.vue'
+import AppProductsGridItem from './../../src/components/AppProductsGridItem.vue'
 
 import { priceFormatter } from './../../src/utils/transformations'
 
@@ -7,7 +7,7 @@ const title = 'Some title'
 const price = 20.99
 const thumbnail = 'someUrl'
 
-const wrapper = mount(ProductsGridItem, {
+const wrapper = mount(AppProductsGridItem, {
   propsData: {
     title,
     price,

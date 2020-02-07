@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 
-import CartItem from './../../src/components/CartItem.vue'
+import AppCartItem from './../../src/components/AppCartItem.vue'
 
 import { priceFormatter } from './../../src/utils/transformations'
 
@@ -9,7 +9,7 @@ const price = 1.2
 const thumbnail = 'someUrl'
 const quantity = 2
 
-const wrapper = mount(CartItem, {
+const wrapper = mount(AppCartItem, {
   propsData: {
     title,
     price,

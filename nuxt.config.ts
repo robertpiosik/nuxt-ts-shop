@@ -77,8 +77,8 @@ const config: Configuration = {
   generate: {
     fallback: true,
     dir: '../out'
-  },
-
+	},
+	
   rootDir: 'src/',
 
   env: {

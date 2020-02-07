@@ -1,9 +1,9 @@
 import { shallowMount } from '@vue/test-utils'
-import ProductsGrid from './../../src/components/ProductsGrid.vue'
+import AppProductsGrid from './../../src/components/AppProductsGrid.vue'
 
 const slotContent = 'slot content'
 
-const wrapper = shallowMount(ProductsGrid, {
+const wrapper = shallowMount(AppProductsGrid, {
 	slots: { default: slotContent }
 })
 

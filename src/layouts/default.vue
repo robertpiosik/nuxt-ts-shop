@@ -3,7 +3,7 @@
 		header(:class="$style.header")
 			div(:class="$style.headerWrapper")
 				div(:class="$style.headerText") Type-Safe Nuxt.js App
-		nuxt
+		nuxt(keep-alive)
 		footer(:class="$style.footer")
 			div(:class="$style.footerReminder") Stay hydrated 💧and type-safe 👀
 </template>
