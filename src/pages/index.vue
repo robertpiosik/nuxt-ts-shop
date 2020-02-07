@@ -7,8 +7,8 @@
 				div(v-show="isCartVisible")
 					div
 						cart-item(
-							v-for="(item, index) in cartItems"
-							:key="index"
+							v-for="item in cartItems"
+							:key="item.productId"
 							v-if="productIndex(item.productId) !== -1"
 							:title="productsData[productIndex(item.productId)].title"
 							:price="productsData[productIndex(item.productId)].price"
@@ -34,8 +34,8 @@
 				br
 				products-grid()
 					products-grid-item(
-						v-for="(product, index) in productsData"
-						:key="index"
+						v-for="product in productsData"
+						:key="product.id"
 						:title="product.title"
 						:price="product.price"
 						:thumbnail="product.thumbnail"

@@ -1,5 +1,9 @@
 <template lang="pug">
-	div(:class="$style.grid")
+	transition-group(
+		:class="$style.grid"
+		:move-class="$style.move"
+		tag="div"
+	)
 		slot
 </template>
 
@@ -20,5 +24,8 @@ export default class ProductsGrid extends Vue {}
   @include atLarge {
     grid-template-columns: repeat(4, 1fr);
   }
+}
+.move {
+  transition: all 0.7s ease-in-out;
 }
 </style>

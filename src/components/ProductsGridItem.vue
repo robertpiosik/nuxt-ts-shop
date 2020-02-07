@@ -50,12 +50,8 @@ export default class ProductsGridItem extends Vue {
   padding: 3rem 0;
   border-radius: 1rem;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  transition: ease-in-out 0.2s;
-  &:hover {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16);
-    & img {
-      transform: scale(1.05);
-    }
+  &:hover img {
+    transform: scale(1.05);
   }
 }
 .thumbnail {
@@ -77,7 +73,7 @@ export default class ProductsGridItem extends Vue {
     height: 100%;
     position: absolute;
     object-fit: cover;
-		transition: ease-in-out 0.2s;
+    transition: ease-in-out 0.2s;
   }
 }
 .title {
