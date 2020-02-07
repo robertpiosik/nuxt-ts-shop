@@ -6,12 +6,20 @@
 				img(:src="thumbnail")
 			div(:class="$style.titleAndRemove")
 				div(:class="$style.title") {{ title }}
-				div(:class="$style.remove" role="button" @click="removeItem()") &#10005 Remove
+				div(:class="$style.remove" role="button" remove @click="removeItem()") &#10005 Remove
 
 		div(:class="$style.quantity")
 			div(:class="$style.quantityAmount") {{ quantity }}
-			button(:class="$style.quantityButton" @click="decreaseQuantity()") -
-			button(:class="$style.quantityButton" @click="increaseQuantity()") +
+			button(
+				:class="$style.quantityButton"
+				@click="decreaseQuantity()"
+				decreaseQuantity
+			) -
+			button(
+				:class="$style.quantityButton"
+				@click="increaseQuantity()"
+				increaseQuantity
+			) +
 
 		div(:class="$style.priceAndTotal")
 			div(v-if="price !== price * quantity") {{ `${priceFormatted.value + priceFormatted.penny} zł` }}

@@ -8,7 +8,7 @@
 			span(:class="$style.pricePenny") {{ penny }}
 			span {{ ` zł` }}
 		div(:class="$style.addToCart")
-			app-button(@click="addToCart()") ADD TO CART
+			app-button(@click="addToCart()" addToCart) ADD TO CART
 </template>
 
 <script lang="ts">

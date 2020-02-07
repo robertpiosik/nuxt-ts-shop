@@ -58,12 +58,8 @@ describe('Component: ProductsGrid', () => {
   })
   describe('EVENTS', () => {
     describe('addToCart', () => {
-      it('should emit', () => {
-        wrapper.vm.$emit('addToCart')
-        expect(wrapper.emitted('addToCart')).toBeTruthy()
-      })
-      it('should emit by clicking on a button (there should be only one)', () => {
-        const button = wrapper.find('button')
+      it('should emit by clicking on a button[addToCart]', () => {
+        const button = wrapper.find('button[addToCart]')
         button.trigger('click')
         expect(wrapper.emitted('addToCart')).toBeTruthy()
       })
