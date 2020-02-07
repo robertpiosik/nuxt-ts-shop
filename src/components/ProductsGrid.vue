@@ -26,6 +26,6 @@ export default class ProductsGrid extends Vue {}
   }
 }
 .move {
-  transition: all 0.7s ease-in-out;
+  transition: transform 0.5s ease-in-out;
 }
 </style>

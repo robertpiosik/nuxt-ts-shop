@@ -5,19 +5,18 @@
 			template(v-if="cartItemsAmount > 0")
 				app-button(@click="toggleCart()") {{ isCartVisible ? `HIDE CART (${cartItemsAmount})` : `SHOW CART (${cartItemsAmount})` }}
 				div(v-show="isCartVisible")
-					div
-						cart-item(
-							v-for="item in cartItems"
-							:key="item.productId"
-							v-if="productIndex(item.productId) !== -1"
-							:title="productsData[productIndex(item.productId)].title"
-							:price="productsData[productIndex(item.productId)].price"
-							:thumbnail="productsData[productIndex(item.productId)].thumbnail"
-							:quantity="item.quantity"
-							@increaseQuantity="increaseQuantity(item.productId)"
-							@decreaseQuantity="decreaseQuantity(item.productId)"
-							@removeItem="removeItem(item.productId)"
-						)
+					cart-item(
+						v-for="item in cartItems"
+						:key="item.productId"
+						v-if="productIndex(item.productId) !== -1"
+						:title="productsData[productIndex(item.productId)].title"
+						:price="productsData[productIndex(item.productId)].price"
+						:thumbnail="productsData[productIndex(item.productId)].thumbnail"
+						:quantity="item.quantity"
+						@increaseQuantity="increaseQuantity(item.productId)"
+						@decreaseQuantity="decreaseQuantity(item.productId)"
+						@removeItem="removeItem(item.productId)"
+					)
 					div Cart total: #[strong {{ `${cartTotalPrice.value + cartTotalPrice.penny} zł` }}]
 			template(v-if="productsData.length > 0 && cartItems.length === 0")
 				div Your cart is empty.

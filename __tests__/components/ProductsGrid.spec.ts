@@ -1,10 +1,10 @@
-import { mount } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 import ProductsGrid from './../../src/components/ProductsGrid.vue'
 
 const slotContent = 'slot content'
 
-const wrapper = mount(ProductsGrid, {
-  slots: { default: slotContent }
+const wrapper = shallowMount(ProductsGrid, {
+	slots: { default: slotContent }
 })
 
 describe('Component: ProductsGrid', () => {
