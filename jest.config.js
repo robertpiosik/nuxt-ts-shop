@@ -1,5 +1,5 @@
 module.exports = {
-  testMatch: ['<rootDir>/**/__tests__/**/*.spec.ts'],
+  testMatch: ['<rootDir>/__tests__/**/*.spec.ts'],
   snapshotSerializers: ['jest-serializer-vue'],
   transform: {
     '.*\\.(vue)$': 'vue-jest',
