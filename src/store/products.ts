@@ -60,7 +60,7 @@ export const actions = actionTree(
   {
     async getProductsData({ commit }) {
       const productsData = await fetch(
-        'https://www.mocky.io/v2/5e3588c72f00007c00793483?mocky-delay=500ms'
+        'https://www.mocky.io/v2/5e3588c72f00007c00793483?mocky-delay=850ms'
       ).then(r => r.json())
 
       commit('setProductsData', productsData)
