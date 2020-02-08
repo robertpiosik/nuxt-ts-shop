@@ -31,13 +31,6 @@ import AppSelect from './../../components/AppSelect.vue'
 import AppProductsGrid from './../../components/AppProductsGrid.vue'
 import AppProductsGridItem from './../../components/AppProductsGridItem.vue'
 
-type SortingOptions =
-  | ''
-  | 'byNameAZ'
-  | 'byNameZA'
-  | 'byPriceAsc'
-  | 'byPriceDesc'
-
 @Component({
   components: {
     AppSection,
@@ -72,7 +65,7 @@ export default class SectionProducts extends Vue {
   }
 
   @Watch('selectedSortingOption')
-  onSelectedSortingOptionChange(val: SortingOptions, oldVal: string) {
+  onSelectedSortingOptionChange(val: string) {
     if (val === 'byNameAZ') {
       this.$accessor.products.sortProductsDataByNameAZ()
     } else if (val === 'byNameZA') {

@@ -9,15 +9,16 @@ import { Vue, Component, Prop, Emit } from 'vue-property-decorator'
 
 @Component
 export default class AppSelect extends Vue {
-	@Prop({type: String, required: true}) readonly label!: String
-	@Prop({ type: Array, required: true }) readonly options!: object[]
+  @Prop({ type: String, required: true }) readonly label!: any
+  @Prop({ type: Array, required: true }) readonly options!: any
 
-	value = ""
+  value = ''
 
-	@Emit()
-	input() {
-		return this.value
-	}
-
+  @Emit()
+  input() {
+    return this.value
+  }
 }
 </script>
+
+<style lang="scss" module></style>

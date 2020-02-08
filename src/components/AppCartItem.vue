@@ -34,10 +34,10 @@ import { priceFormatter } from './../utils/transformations'
 
 @Component
 export default class CartItem extends Vue {
-  @Prop({ type: String, required: true }) readonly title!: string
+  @Prop({ type: String, required: true }) readonly title!: any
   @Prop({ type: Number, required: true }) readonly price!: number
-  @Prop({ type: String, required: true }) readonly thumbnail!: string
-  @Prop({ type: Number, required: true }) readonly quantity!: number
+  @Prop({ type: String, required: true }) readonly thumbnail!: any
+  @Prop({ type: Number, required: true }) readonly quantity!: any
 
   get priceFormatted() {
     return priceFormatter(this.price)

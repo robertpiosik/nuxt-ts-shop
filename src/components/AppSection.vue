@@ -12,7 +12,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 
 @Component
 export default class AppSection extends Vue {
-  @Prop(String) readonly title?: string
+  @Prop(String) readonly title?: any
 }
 </script>
 
