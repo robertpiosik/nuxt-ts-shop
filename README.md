@@ -3,7 +3,7 @@
 
 ## Summary
 
-The purpose of this codebase is to show how to wire things together to get strongly-typed Vue.js, JAMstack ready app.
+The purpose of this codebase is to show how to wire things together and get a strongly-typed Nuxt.js app.
 
 
 ## Getting started
