@@ -70,5 +70,9 @@ export default class SectionProducts extends Vue {
     this.$accessor.cart.preserveCartState()
     document.documentElement.scrollTop = 0
   }
+
+  mounted() {
+    this.$accessor.products.getProductsData()
+  }
 }
 </script>

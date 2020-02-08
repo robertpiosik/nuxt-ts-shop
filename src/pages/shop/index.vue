@@ -17,9 +17,5 @@ import SectionProducts from './-SectionProducts.vue'
   }
 })
 export default class PageIndex extends Vue {
-  mounted() {
-    this.$accessor.products.getProductsData()
-    this.$accessor.cart.loadCartState()
-  }
 }
 </script>

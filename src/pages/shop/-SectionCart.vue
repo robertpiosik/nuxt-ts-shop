@@ -96,5 +96,9 @@ export default class SectionCart extends Vue {
   productIndex(id: number) {
     return this.productsData.findIndex(p => p.id === id)
   }
+
+  mounted() {
+    this.$accessor.cart.loadCartState()
+  }
 }
 </script>
