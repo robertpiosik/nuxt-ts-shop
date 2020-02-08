@@ -1,5 +1,5 @@
 <template lang="pug">
-	app-section(title="Cart" v-if="productsData.length > 0")
+	app-section(title="Cart")
 		template(v-if="cartItemsAmount > 0")
 			app-button(@click="toggleCart()") {{ isCartVisible ? `HIDE CART (${cartItemsAmount})` : `SHOW CART (${cartItemsAmount})` }}
 			div(v-show="isCartVisible")
@@ -95,10 +95,6 @@ export default class SectionCart extends Vue {
 
   productIndex(id: number) {
     return this.productsData.findIndex(p => p.id === id)
-  }
-
-  mounted() {
-    this.$accessor.cart.loadCartState()
   }
 }
 </script>

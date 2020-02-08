@@ -1,24 +1,21 @@
 <template lang="pug">
-	app-section(title="Products")
-
-		template(v-if="productsData.length > 0")
-			app-select(
-				label="Sort products..."
-				:options="sortingOptions"
-				v-model="selectedSortingOption"
+	app-section(
+		title="Products"
+	)
+		app-select(
+			label="Sort products..."
+			:options="sortingOptions"
+			v-model="selectedSortingOption"
+		)
+		app-products-grid()
+			app-products-grid-item(
+				v-for="product in productsData"
+				:key="product.id"
+				:title="product.title"
+				:price="product.price"
+				:thumbnail="product.thumbnail"
+				@add-to-cart="addToCart(product.id)"
 			)
-			app-products-grid()
-				app-products-grid-item(
-					v-for="product in productsData"
-					:key="product.id"
-					:title="product.title"
-					:price="product.price"
-					:thumbnail="product.thumbnail"
-					@add-to-cart="addToCart(product.id)"
-				)
-
-		template(v-else)
-			div Fetching data...
 </template>
 
 <script lang="ts">
@@ -81,10 +78,6 @@ export default class SectionProducts extends Vue {
     this.$accessor.cart.addToCart(prodId)
     this.$accessor.cart.preserveCartState()
     document.documentElement.scrollTop = 0
-  }
-
-  mounted() {
-    this.$accessor.products.getProductsData()
   }
 }
 </script>
