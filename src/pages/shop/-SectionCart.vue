@@ -11,9 +11,9 @@
 					:price="productsData[productIndex(item.productId)].price"
 					:thumbnail="productsData[productIndex(item.productId)].thumbnail"
 					:quantity="item.quantity"
-					@increaseQuantity="increaseQuantity(item.productId)"
-					@decreaseQuantity="decreaseQuantity(item.productId)"
-					@removeItem="removeItem(item.productId)"
+					@increase-quantity="increaseQuantity(item.productId)"
+					@decrease-quantity="decreaseQuantity(item.productId)"
+					@remove-item="removeItem(item.productId)"
 				)
 				div Cart total: #[strong {{ `${cartTotalPrice.value + cartTotalPrice.penny} zł` }}]
 		template(v-if="productsData.length > 0 && cartItems.length === 0")

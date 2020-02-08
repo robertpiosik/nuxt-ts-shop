@@ -34,7 +34,7 @@ export default class ProductsGridItem extends Vue {
     this.penny = penny
   }
 
-  @Emit('addToCart')
+  @Emit()
   addToCart() {}
 }
 </script>

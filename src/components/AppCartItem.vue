@@ -47,13 +47,13 @@ export default class CartItem extends Vue {
     return priceFormatter(this.price * this.quantity)
   }
 
-  @Emit('increaseQuantity')
+  @Emit()
   increaseQuantity() {}
 
-  @Emit('decreaseQuantity')
+  @Emit()
   decreaseQuantity() {}
 
-  @Emit('removeItem')
+  @Emit()
   removeItem() {}
 }
 </script>
@@ -64,12 +64,12 @@ export default class CartItem extends Vue {
   grid-gap: 1.5rem;
   margin: 1.5rem 0;
   max-width: 65rem;
-	padding-bottom: 1.5rem;
-	border-bottom: .1rem solid rgba(black, 0.1);
-	&:last-of-type {
-		border-bottom: none;
-		margin-bottom: 0;
-	}
+  padding-bottom: 1.5rem;
+  border-bottom: 0.1rem solid rgba(black, 0.1);
+  &:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
   @include toSmall {
     grid-template-columns: 8rem 1fr;
     grid-template-rows: repeat(2, auto);
@@ -118,9 +118,9 @@ export default class CartItem extends Vue {
 .remove {
   font-size: 1.2rem;
   font-weight: bold;
-	color: rgba(black, 0.3);
-	cursor: pointer;
-	padding: .5rem 1rem .5rem 0;
+  color: rgba(black, 0.3);
+  cursor: pointer;
+  padding: 0.5rem 1rem 0.5rem 0;
   &:hover {
     color: red;
   }
@@ -139,8 +139,8 @@ export default class CartItem extends Vue {
 
   justify-self: end;
   align-self: center;
-	font-weight: bold;
-	margin-right: 1rem;
+  font-weight: bold;
+  margin-right: 1rem;
 }
 .quantityButton {
   justify-self: center;
