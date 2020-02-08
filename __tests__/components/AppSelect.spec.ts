@@ -25,4 +25,14 @@ describe('Component: AppSelect', () => {
       expect(wrapper.isVueInstance()).toBeTruthy()
     })
   })
+  describe('PROPS', () => {
+    describe('label', () => {
+      it('should receive', () => {
+        expect(wrapper.props('label')).toBe(label)
+      })
+    })
+    describe('options', () => {
+      expect(wrapper.props('options')).toBe(options)
+    })
+  })
 })
