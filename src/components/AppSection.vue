@@ -3,7 +3,7 @@
 		div(:class="$style.wrapper")
 			template(v-if="title")
 				div(:class="$style.title")
-					h2 {{ title }}
+					h1 {{ title }}
 			slot
 </template>
 
@@ -19,7 +19,7 @@ export default class AppSection extends Vue {
 <style lang="scss" module>
 .section {
   margin: 4rem 0;
-  @include atMedium {
+  @include atSmall {
     margin: 6rem 0;
   }
 }
@@ -27,12 +27,13 @@ export default class AppSection extends Vue {
   @include wrapper;
 }
 .title {
-  margin-bottom: 1rem;
-  @include atMedium {
-    margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
+  @include atSmall{
+    margin-bottom: 3rem;
   }
-  & h2 {
-    @include h2;
+  & h1 {
+		@include h1;
+		line-height: 1;
   }
 }
 </style>

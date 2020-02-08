@@ -17,11 +17,6 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 export default class AppButton extends Vue {
   @Prop(String) readonly to?: string
   @Prop(String) readonly href?: string
-  @Prop({ type: String, default: 'normal' }) readonly size!:
-    | 'small'
-    | 'normal'
-    | 'large'
-  @Prop({ type: Boolean, default: false }) readonly isLoading!: boolean
 
   get buttonType() {
     if (this.to && this.to.length > 0) {
