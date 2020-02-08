@@ -1,4 +1,4 @@
-<h1 align="center" >🏅 Nuxt TS Shop</h1>
+<h1 align="center" >🤙 Nuxt TS Shop</h1>
 <p align="center">A strongly-typed Nuxt.js application</p>
 
 ## Summary
