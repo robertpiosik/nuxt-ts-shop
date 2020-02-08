@@ -30,9 +30,18 @@ describe('Component: AppSelect', () => {
       it('should receive', () => {
         expect(wrapper.props('label')).toBe(label)
       })
+      it('should render', () => {
+        expect(wrapper.text()).toContain(label)
+      })
     })
     describe('options', () => {
-      expect(wrapper.props('options')).toBe(options)
+      it('should receive', () => {
+        expect(wrapper.props('options')).toBe(options)
+      })
+      it('should render', () => {
+        const optionsLabels = options.map(o => o.label).join('')
+        expect(wrapper.text()).toContain(optionsLabels)
+      })
     })
   })
 })
