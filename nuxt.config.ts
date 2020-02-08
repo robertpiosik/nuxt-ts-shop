@@ -47,13 +47,10 @@ const config: Configuration = {
   css: ['normalize.css/normalize.css', 'assets/css/style.css'],
 
   styleResources: {
-    scss: [
-			'assets/scss/mixins.scss'
-			,'assets/scss/variables.scss'
-		]
+    scss: ['assets/scss/mixins.scss', 'assets/scss/variables.scss']
   },
 
-  modules: ['@nuxtjs/pwa', '@nuxtjs/style-resources'],
+  modules: ['@nuxtjs/pwa', '@nuxtjs/sitemap', '@nuxtjs/style-resources'],
 
   buildModules: ['@nuxt/typescript-build', 'nuxt-typed-vuex'],
 
@@ -72,13 +69,18 @@ const config: Configuration = {
     transpile: [/typed-vuex/]
   },
 
+  sitemap: {
+    hostname: 'https://nuxt-ts-shop.netlify.com',
+    gzip: true
+  },
+
   modern: 'client',
 
   generate: {
     fallback: true,
     dir: '../out'
-	},
-	
+  },
+
   rootDir: 'src/',
 
   env: {
