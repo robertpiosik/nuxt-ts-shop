@@ -5,7 +5,7 @@
 				div(:class="$style.headerText") Type-Safe Nuxt.js App
 		nuxt(keep-alive)
 		footer(:class="$style.footer")
-			div(:class="$style.footerReminder") Stay hydrated 💧and type-safe 👀
+			div(:class="$style.footerReminder") Stay hydrated 💧and type-safe 🤙
 </template>
 
 <style lang="scss" module>
