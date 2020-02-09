@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component: AppSelect GENERAL should match a snapshot 1`] = `
-<select>
+<select class="select">
   <option disabled="disabled" value="">Select option</option>
   <option value="option-1">Option 1</option>
   <option value="option-2">Option 2</option>

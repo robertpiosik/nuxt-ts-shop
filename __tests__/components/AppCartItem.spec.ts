@@ -69,8 +69,8 @@ describe('Component: CartItem', () => {
   })
   describe('EVENTS', () => {
     describe('removeItem', () => {
-      it('should emit upon clicking on div[remove]', () => {
-        const removeBtn = wrapper.find('div[remove]')
+      it('should emit upon clicking on button[remove]', () => {
+        const removeBtn = wrapper.find('button[remove]')
         removeBtn.trigger('click')
         expect(wrapper.emitted('remove-item')).toBeTruthy()
       })

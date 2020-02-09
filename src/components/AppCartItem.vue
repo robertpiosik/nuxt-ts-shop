@@ -6,12 +6,12 @@
 				img(:src="thumbnail")
 			div(:class="$style.titleAndRemove")
 				div(:class="$style.title") {{ title }}
-				div(
-					:class="$style.remove"
-					role="button"
-					@click="removeItem()"
-					remove
-				) &#10005 Remove
+				div
+					button(
+						:class="$style.remove"
+						@click="removeItem()"
+						remove
+					) &#10005 Remove
 
 		div(:class="$style.quantity")
 			div(:class="$style.quantityAmount") {{ quantity }}

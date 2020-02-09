@@ -6,7 +6,7 @@ exports[`Component: CartItem GENERAL should match a snapshot 1`] = `
     <div class="thumbnail"><img src="someUrl"></div>
     <div class="titleAndRemove">
       <div class="title">Water</div>
-      <div role="button" remove="remove" class="remove">✕ Remove</div>
+      <div><button remove="remove" class="remove">✕ Remove</button></div>
     </div>
   </div>
   <div class="quantity">
@@ -14,7 +14,6 @@ exports[`Component: CartItem GENERAL should match a snapshot 1`] = `
   </div>
   <div class="priceAndTotal">
     <div>1,2 zł</div>
-    <!---->
     <div><strong>2,4 zł</strong></div>
   </div>
 </div>
