@@ -9,7 +9,7 @@ import AppSection from './../../components/AppSection.vue'
 
 @Component({ components: { AppSection } })
 export default class FetchingData extends Vue {
-	dots = ''
+	dots = '...'
 	
   created() {
     setInterval(() => {
