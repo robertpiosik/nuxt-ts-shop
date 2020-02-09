@@ -22,9 +22,11 @@
 			) +
 
 		div(:class="$style.priceAndTotal")
-			div(v-if="price !== price * quantity") {{ `${priceFormatted.value + priceFormatted.penny} zł` }}
-			div(v-if="price === price * quantity") #[strong {{ `${priceFormatted.value + priceFormatted.penny} zł` }}]
-			div(v-if="price !== price * quantity") #[strong {{ `${totalFormatted.value + totalFormatted.penny} zł` }}]
+			template(v-if="price !== price * quantity")
+				div {{ `${priceFormatted.value + priceFormatted.penny} zł` }}
+				div #[strong {{ `${totalFormatted.value + totalFormatted.penny} zł` }}]
+			template(v-else)
+				div #[strong {{ `${priceFormatted.value + priceFormatted.penny} zł` }}]
 </template>
 
 <script lang="ts">
