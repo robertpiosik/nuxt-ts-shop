@@ -13,8 +13,8 @@ exports[`Component: CartItem GENERAL should match a snapshot 1`] = `
     <div class="quantityAmount">2</div><button decreasequantity="decreaseQuantity" class="quantityButton">-</button><button increasequantity="increaseQuantity" class="quantityButton">+</button>
   </div>
   <div class="priceAndTotal">
-    <div>1,2 zł</div>
-    <div><strong>2,4 zł</strong></div>
+    <div>1,20 zł</div>
+    <div><strong>2,40 zł</strong></div>
   </div>
 </div>
 `;
