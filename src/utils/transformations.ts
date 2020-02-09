@@ -1,21 +1,19 @@
 export const priceFormatter = (price: number) => {
   let newPrice = price.toString()
-  const dotIndexOf = newPrice.indexOf('.')
 
-  if (dotIndexOf !== -1) {
-    newPrice = newPrice.replace('.', ',')
-  } else {
-    newPrice = `${newPrice},00`
-  }
-
-  const newPriceSplitted = newPrice.split(',')
+  const newPriceSplitted = newPrice.split('.')
 
   const value = newPriceSplitted[0]
-  let penny = `,${newPriceSplitted[1]}`
+  let penny: string
 
-	// Fix for ",96000000000004" problem
-  if (penny.length > 3) {
-    penny = penny.slice(0, 3)
+  if (newPriceSplitted[1]) {
+    if (newPriceSplitted[1].length >= 2) {
+      penny = `,${newPriceSplitted[1].slice(0, 2)}`
+    } else {
+      penny = `,${newPriceSplitted[1]}0`
+    }
+  } else {
+    penny = `,00`
   }
 
   return {
