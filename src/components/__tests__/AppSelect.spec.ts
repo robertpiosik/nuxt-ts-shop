@@ -1,6 +1,6 @@
 import { mount } from '@vue/test-utils'
 
-import AppSelect from './../../src/components/AppSelect.vue'
+import AppSelect from './../AppSelect.vue'
 
 const label = 'Select option'
 

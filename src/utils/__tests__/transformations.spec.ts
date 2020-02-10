@@ -1,4 +1,4 @@
-import { priceFormatter } from '../../src/utils/transformations'
+import { priceFormatter } from '../transformations'
 
 describe('Utils: transformations', () => {
   describe('priceFormatter', () => {

@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils'
-import AppProductsGridItem from './../../src/components/AppProductsGridItem.vue'
+import AppProductsGridItem from './../AppProductsGridItem.vue'
 
-import { priceFormatter } from './../../src/utils/transformations'
+import { priceFormatter } from './../../utils/transformations'
 
 const title = 'Some title'
 const price = 20.99

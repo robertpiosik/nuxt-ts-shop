@@ -1,8 +1,8 @@
 import { mount } from '@vue/test-utils'
 
-import AppCartItem from './../../src/components/AppCartItem.vue'
+import AppCartItem from './../AppCartItem.vue'
 
-import { priceFormatter } from './../../src/utils/transformations'
+import { priceFormatter } from './../../utils/transformations'
 
 const title = 'Water'
 const price = 1.2
