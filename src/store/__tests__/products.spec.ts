@@ -1,11 +1,5 @@
-import { state } from '../products'
+// import { test } from './../products'
 
-// const { getProductsAmount } = getters
-
-describe('Store: products', () => {
-  describe('GETTERS', () => {
-    it('sd', () => {
-      expect(state).toBe(1)
-    })
-  })
+it('todo', () => {
+  expect('todo').toBe('todo')
 })

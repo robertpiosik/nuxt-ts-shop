@@ -39,7 +39,7 @@
   "jest": {
     "testMatch": [
       "<rootDir>/**/__tests__/**/*.spec.ts"
-    ],
+		],
     "moduleFileExtensions": [
       "js",
       "ts",
@@ -50,7 +50,6 @@
       ".*\\.(vue)$": "vue-jest",
       "^.+\\.tsx?$": "ts-jest"
     },
-    "testURL": "http://localhost/",
     "snapshotSerializers": [
       "jest-serializer-vue"
     ],
