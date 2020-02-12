@@ -61,7 +61,7 @@ export const actions = actionTree(
   { state, getters, mutations },
   {
     async getProductsData({ commit }) {
-      const productsData = await fetch(
+      const productsData: Product[] = await fetch(
         'https://www.mocky.io/v2/5e3588c72f00007c00793483?mocky-delay=850ms'
       ).then(r => r.json())
 
