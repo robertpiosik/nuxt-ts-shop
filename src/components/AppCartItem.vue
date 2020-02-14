@@ -73,10 +73,6 @@ export default class CartItem extends Vue {
   max-width: 65rem;
   padding-bottom: 1.5rem;
   border-bottom: 0.1rem solid rgba(black, 0.1);
-  &:last-of-type {
-    border-bottom: none;
-    margin-bottom: 0;
-  }
   @include toSmall {
     grid-template-columns: 8rem 1fr;
 		grid-template-rows: repeat(2, auto);
