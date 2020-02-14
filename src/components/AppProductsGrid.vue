@@ -17,16 +17,31 @@ export default class ProductsGrid extends Vue {}
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1.5rem;
+  grid-template-rows: auto;
+  @include ieOnly {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(4, auto);
+  }
+  gap: 1.5rem;
   margin: 1.5rem 0;
   @include atSmall {
     margin: 3rem 0;
   }
   @include atMedium {
     grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    @include ieOnly {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(3, auto);
+    }
   }
   @include atLarge {
     grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    @include ieOnly {
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(2, auto);
+    }
   }
 }
 .move {
