@@ -26,7 +26,7 @@ const config: Configuration = {
       }
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
-    script: [{ src: '/objectFitPolyfill.basic.min.js', body: true }]
+    script: [{ src: '/objectFitPolyfill.basic.min.js', defer: true }]
   },
 
   meta: {
