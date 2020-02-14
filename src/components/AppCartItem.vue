@@ -10,8 +10,8 @@
 					button(
 						:class="$style.remove"
 						@click="removeItem()"
-						remove
-					) &#10005 Remove
+					  remove
+					) &#10005; Remove
 
 		div(:class="$style.quantity")
 			div(:class="$style.quantityAmount") {{ quantity }}
@@ -68,27 +68,22 @@ export default class CartItem extends Vue {
 <style lang="scss" module>
 .container {
   display: grid;
-  gap: 1.5rem;
   margin: 1.5rem 0;
   max-width: 65rem;
   padding-bottom: 1.5rem;
   border-bottom: 0.1rem solid rgba(black, 0.1);
-  @include toSmall {
-    grid-template-columns: 8rem 1fr;
-		grid-template-rows: repeat(2, auto);
-		grid-template-areas:
-			"thumbnailAndTitle thumbnailAndTitle"
-			"quantity priceAndTotal"
-  }
+  grid-template-columns: 8rem 1fr;
+  grid-template-areas:
+    'thumbnailAndTitle thumbnailAndTitle'
+    'quantity priceAndTotal';
+  gap: 1.5rem;
   @include atSmall {
-		grid-template-columns: 3fr 1fr 1fr;
-		grid-template-rows: auto;
-		grid-template-areas:
-			"thumbnailAndTitle quantity priceAndTotal"
+    grid-template-columns: 3fr 1fr 1fr;
+    grid-template-areas: 'thumbnailAndTitle quantity priceAndTotal';
   }
 }
 .thumbnailAndTitle {
-	grid-area: thumbnailAndTitle;
+  grid-area: thumbnailAndTitle;
 
   display: grid;
   grid-template-columns: 8rem auto;
@@ -132,29 +127,29 @@ export default class CartItem extends Vue {
   }
 }
 .quantity {
-	grid-area: quantity;
+  grid-area: quantity;
   justify-self: end;
 
   display: grid;
   gap: 0.5rem;
   grid-template-columns: repeat(2, auto);
-	grid-template-rows: repeat(2, 1fr);
-	grid-template-areas:
-		"quantityAmount quantityButtonDecrease"
-		"quantityAmount quantityButtonIncrease"
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas:
+    'quantityAmount quantityButtonDecrease'
+    'quantityAmount quantityButtonIncrease';
 }
 .quantityAmount {
-	grid-area: quantityAmount;
+  grid-area: quantityAmount;
 
   align-self: center;
   font-weight: bold;
   margin-right: 1rem;
 }
 .quantityButtonDecrease {
-	grid-area: quantityButtonDecrease;
+  grid-area: quantityButtonDecrease;
 }
 .quantityButtonIncrease {
-	grid-area: quantityButtonIncrease;
+  grid-area: quantityButtonIncrease;
 }
 .quantityButton {
   width: 3rem;
@@ -173,8 +168,8 @@ export default class CartItem extends Vue {
   }
 }
 .priceAndTotal {
-	grid-area: priceAndTotal;
-	
+  grid-area: priceAndTotal;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
