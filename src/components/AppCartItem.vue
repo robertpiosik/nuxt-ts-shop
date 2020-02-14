@@ -16,12 +16,12 @@
 		div(:class="$style.quantity")
 			div(:class="$style.quantityAmount") {{ quantity }}
 			button(
-				:class="$style.quantityButton"
+				:class="[$style.quantityButton, $style.quantityButtonDecrease]"
 				@click="decreaseQuantity()"
 				decreaseQuantity
 			) -
 			button(
-				:class="$style.quantityButton"
+				:class="[$style.quantityButton, $style.quantityButtonIncrease]"
 				@click="increaseQuantity()"
 				increaseQuantity
 			) +
@@ -41,10 +41,10 @@ import { priceFormatter } from './../utils/transformations'
 
 @Component
 export default class CartItem extends Vue {
-  @Prop({ type: String, required: true }) readonly title!: any
+  @Prop({ type: String, required: true }) readonly title!: string
   @Prop({ type: Number, required: true }) readonly price!: number
-  @Prop({ type: String, required: true }) readonly thumbnail!: any
-  @Prop({ type: Number, required: true }) readonly quantity!: any
+  @Prop({ type: String, required: true }) readonly thumbnail!: string
+  @Prop({ type: Number, required: true }) readonly quantity!: number
 
   get priceFormatted() {
     return priceFormatter(this.price)
@@ -68,7 +68,7 @@ export default class CartItem extends Vue {
 <style lang="scss" module>
 .container {
   display: grid;
-  grid-gap: 1.5rem;
+  gap: 1.5rem;
   margin: 1.5rem 0;
   max-width: 65rem;
   padding-bottom: 1.5rem;
@@ -79,22 +79,25 @@ export default class CartItem extends Vue {
   }
   @include toSmall {
     grid-template-columns: 8rem 1fr;
-    grid-template-rows: repeat(2, auto);
+		grid-template-rows: repeat(2, auto);
+		grid-template-areas:
+			"thumbnailAndTitle thumbnailAndTitle"
+			"quantity priceAndTotal"
   }
   @include atSmall {
-    grid-template-columns: 4fr 1fr 1fr;
+		grid-template-columns: 3fr 1fr 1fr;
+		grid-template-rows: auto;
+		grid-template-areas:
+			"thumbnailAndTitle quantity priceAndTotal"
   }
 }
 .thumbnailAndTitle {
-  @include toSmall {
-    grid-column-start: 1;
-    grid-column-end: 3;
-  }
+	grid-area: thumbnailAndTitle;
 
   display: grid;
   grid-template-columns: 8rem auto;
   grid-template-rows: 8rem;
-  grid-gap: 1.5rem;
+  gap: 1.5rem;
   @include atSmall {
     grid-template-columns: 10rem auto;
     grid-template-rows: 10rem;
@@ -133,25 +136,31 @@ export default class CartItem extends Vue {
   }
 }
 .quantity {
+	grid-area: quantity;
   justify-self: end;
 
   display: grid;
-  grid-gap: 0.5rem;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  gap: 0.5rem;
+  grid-template-columns: repeat(2, auto);
+	grid-template-rows: repeat(2, 1fr);
+	grid-template-areas:
+		"quantityAmount quantityButtonDecrease"
+		"quantityAmount quantityButtonIncrease"
 }
 .quantityAmount {
-  grid-row-start: 1;
-  grid-row-end: 3;
+	grid-area: quantityAmount;
 
-  justify-self: end;
   align-self: center;
   font-weight: bold;
   margin-right: 1rem;
 }
+.quantityButtonDecrease {
+	grid-area: quantityButtonDecrease;
+}
+.quantityButtonIncrease {
+	grid-area: quantityButtonIncrease;
+}
 .quantityButton {
-  justify-self: center;
-
   width: 3rem;
   height: 3rem;
   display: flex;
@@ -168,6 +177,8 @@ export default class CartItem extends Vue {
   }
 }
 .priceAndTotal {
+	grid-area: priceAndTotal;
+	
   display: flex;
   flex-direction: column;
   justify-content: center;
