@@ -72,14 +72,12 @@ export default class CartItem extends Vue {
   max-width: 65rem;
   padding-bottom: 1.5rem;
   border-bottom: 0.1rem solid rgba(black, 0.1);
-  grid-template-columns: 8rem 1fr;
-  grid-template-areas:
+  grid-template:
     'thumbnailAndTitle thumbnailAndTitle'
-    'quantity priceAndTotal';
+    'quantity priceAndTotal' / 8rem 1fr;
   gap: 1.5rem;
   @include atSmall {
-    grid-template-columns: 3fr 1fr 1fr;
-    grid-template-areas: 'thumbnailAndTitle quantity priceAndTotal';
+    grid-template: 'thumbnailAndTitle quantity priceAndTotal' / 3fr 1fr 1fr;
   }
 }
 .thumbnailAndTitle {
@@ -132,11 +130,9 @@ export default class CartItem extends Vue {
 
   display: grid;
   gap: 0.5rem;
-  grid-template-columns: repeat(2, auto);
-  grid-template-rows: repeat(2, 1fr);
-  grid-template-areas:
-    'quantityAmount quantityButtonDecrease'
-    'quantityAmount quantityButtonIncrease';
+  grid-template:
+    'quantityAmount quantityButtonDecrease' 1fr
+    'quantityAmount quantityButtonIncrease' 1fr / auto auto;
 }
 .quantityAmount {
   grid-area: quantityAmount;
