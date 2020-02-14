@@ -1,7 +1,11 @@
 <template lang="pug">
 	div(:class="$style.container")
 		div(:class="$style.thumbnail")
-			img(:src="thumbnail")
+			img(
+				:src="thumbnail"
+				:alt="title"
+				ref="thumbnailImage"
+			)
 		div(:class="$style.title") {{ title }}
 		div(:class="$style.price")
 			span(:class="$style.priceValue") {{ value }}
@@ -12,7 +16,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Watch, Emit } from 'vue-property-decorator'
+import { Vue, Component, Prop, Watch, Emit, Ref } from 'vue-property-decorator'
 
 import AppButton from './../components/AppButton.vue'
 
@@ -36,6 +40,12 @@ export default class ProductsGridItem extends Vue {
 
   @Emit()
   addToCart() {}
+
+  @Ref('thumbnailImage') readonly thumbnailImage!: HTMLImageElement
+
+  mounted() {
+    ;(<any>window).objectFitPolyfill(this.thumbnailImage)
+  }
 }
 </script>
 
@@ -55,15 +65,14 @@ export default class ProductsGridItem extends Vue {
   }
 }
 .thumbnail {
-  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
   @include toExtraSmall {
     width: 9rem;
     height: 9rem;
   }
   width: 12rem;
   height: 12rem;
-  overflow: hidden;
-  border-radius: 1rem;
   @include atSmall {
     width: 20rem;
     height: 20rem;
@@ -71,7 +80,6 @@ export default class ProductsGridItem extends Vue {
   & img {
     width: 100%;
     height: 100%;
-    position: absolute;
     object-fit: cover;
     transition: ease-in-out 0.2s;
   }

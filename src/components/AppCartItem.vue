@@ -3,7 +3,11 @@
 
 		div(:class="$style.thumbnailAndTitle")
 			div(:class="$style.thumbnail")
-				img(:src="thumbnail")
+				img(
+					:src="thumbnail"
+					:alt="title"
+					ref="thumbnailImage"
+				)
 			div(:class="$style.titleAndRemove")
 				div(:class="$style.title") {{ title }}
 				div
@@ -35,7 +39,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Emit } from 'vue-property-decorator'
+import { Vue, Component, Prop, Emit, Ref } from 'vue-property-decorator'
 
 import { priceFormatter } from './../utils/transformations'
 
@@ -62,6 +66,12 @@ export default class CartItem extends Vue {
 
   @Emit()
   removeItem() {}
+
+  @Ref('thumbnailImage') readonly thumbnailImage!: HTMLImageElement
+
+  mounted() {
+    ;(<any>window).objectFitPolyfill(this.thumbnailImage)
+  }
 }
 </script>
 
