@@ -32,8 +32,11 @@ export default class AppSection extends Vue {
     margin-bottom: 3rem;
   }
   & h1 {
-		@include h1;
 		line-height: 1;
+			font-size: 3rem;
+		@include atSmall {
+			font-size: 3.7rem;
+		}
   }
 }
 </style>
