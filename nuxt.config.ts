@@ -66,7 +66,14 @@ const config: Configuration = {
         }
       }
     },
-    transpile: [/typed-vuex/]
+    transpile: [/typed-vuex/],
+    postcss: {
+      preset: {
+        autoprefixer: {
+          grid: 'autoplace'
+        }
+      }
+    }
   },
 
   sitemap: {
