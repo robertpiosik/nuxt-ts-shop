@@ -11,20 +11,20 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component
 export default class AppButton extends Vue {
-  @Prop(String) readonly to?: string
-  @Prop(String) readonly href?: string
+  @Prop(String) readonly to?: string;
+  @Prop(String) readonly href?: string;
 
   get buttonType() {
     if (this.to && this.to.length > 0) {
-      return 'nuxt-link'
+      return 'nuxt-link';
     } else if (this.href && this.href.length > 0) {
-      return 'a'
+      return 'a';
     } else {
-      return 'button'
+      return 'button';
     }
   }
 }

@@ -1,14 +1,14 @@
-import { Configuration } from '@nuxt/types'
+import { Configuration } from '@nuxt/types';
 
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
-      NODE_ENV: 'development' | 'production'
+      NODE_ENV: 'development' | 'production';
     }
   }
 }
 
-const description = 'This is a demo Nuxt-TS app.'
+const description = 'This is a demo Nuxt-TS app.';
 
 const config: Configuration = {
   head: {
@@ -99,6 +99,6 @@ const config: Configuration = {
     port: '3000',
     host: '0.0.0.0'
   }
-}
+};
 
-export default config
+export default config;

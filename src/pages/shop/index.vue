@@ -8,11 +8,11 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component } from 'vue-property-decorator';
 
-import SectionCart from './-SectionCart.vue'
-import SectionProducts from './-SectionProducts.vue'
-import FetchingData from './-FetchingData.vue'
+import SectionCart from './-SectionCart.vue';
+import SectionProducts from './-SectionProducts.vue';
+import FetchingData from './-FetchingData.vue';
 
 @Component({
   components: {
@@ -23,12 +23,12 @@ import FetchingData from './-FetchingData.vue'
 })
 export default class PageIndex extends Vue {
   get productsData() {
-    return this.$accessor.products.productsData
+    return this.$accessor.products.productsData;
   }
 
   mounted() {
-    this.$accessor.products.getProductsData()
-    this.$accessor.cart.loadCartState()
+    this.$accessor.products.getProductsData();
+    this.$accessor.cart.loadCartState();
   }
 }
 </script>

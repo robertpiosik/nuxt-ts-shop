@@ -8,11 +8,11 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator';
 
 @Component
 export default class AppSection extends Vue {
-  @Prop(String) readonly title?: any
+  @Prop(String) readonly title?: any;
 }
 </script>
 
@@ -28,15 +28,15 @@ export default class AppSection extends Vue {
 }
 .title {
   margin-bottom: 1.5rem;
-  @include atSmall{
+  @include atSmall {
     margin-bottom: 3rem;
   }
   & h1 {
-		line-height: 1;
-			font-size: 3rem;
-		@include atSmall {
-			font-size: 3.7rem;
-		}
+    line-height: 1;
+    font-size: 3rem;
+    @include atSmall {
+      font-size: 3.7rem;
+    }
   }
 }
 </style>

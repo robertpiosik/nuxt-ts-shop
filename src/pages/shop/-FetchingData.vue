@@ -3,26 +3,26 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component } from 'vue-property-decorator';
 
-import AppSection from './../../components/AppSection.vue'
+import AppSection from './../../components/AppSection.vue';
 
 @Component({ components: { AppSection } })
 export default class FetchingData extends Vue {
-	dots = '...'
-	
+  dots = '...';
+
   created() {
     setInterval(() => {
       if (this.dots === '') {
-        this.dots = '.'
+        this.dots = '.';
       } else if (this.dots === '.') {
-        this.dots = '..'
+        this.dots = '..';
       } else if (this.dots === '..') {
-        this.dots = '...'
+        this.dots = '...';
       } else if (this.dots === '...') {
-        this.dots = ''
+        this.dots = '';
       }
-    }, 100)
+    }, 100);
   }
 }
 </script>

@@ -1,15 +1,15 @@
-import { mount } from '@vue/test-utils'
-import AppButton from './../AppButton.vue'
+import { mount } from '@vue/test-utils';
+import AppButton from './../AppButton.vue';
 
-const wrapper = mount(AppButton)
+const wrapper = mount(AppButton);
 
 describe('Component: AppButton', () => {
   describe('GENERAL', () => {
     it('should match a snapshot', () => {
-      expect(wrapper).toMatchSnapshot()
-    })
+      expect(wrapper).toMatchSnapshot();
+    });
     it('should be a Vue instance', () => {
-      expect(wrapper.isVueInstance()).toBeTruthy()
-    })
-  })
-})
+      expect(wrapper.isVueInstance()).toBeTruthy();
+    });
+  });
+});

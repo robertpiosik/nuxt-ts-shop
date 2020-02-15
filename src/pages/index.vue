@@ -4,9 +4,9 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component } from 'vue-property-decorator';
 
-import AppSection from './../components/AppSection.vue'
+import AppSection from './../components/AppSection.vue';
 
 @Component({
   components: { AppSection }

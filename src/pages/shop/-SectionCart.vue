@@ -21,80 +21,80 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Watch } from 'vue-property-decorator'
+import { Vue, Component, Watch } from 'vue-property-decorator';
 
-import { priceFormatter } from './../../utils/transformations'
+import { priceFormatter } from './../../utils/transformations';
 
-import AppSection from './../../components/AppSection.vue'
-import AppButton from './../../components/AppButton.vue'
-import AppCartItem from './../../components/AppCartItem.vue'
+import AppSection from './../../components/AppSection.vue';
+import AppButton from './../../components/AppButton.vue';
+import AppCartItem from './../../components/AppCartItem.vue';
 
 @Component({
   components: { AppButton, AppSection, AppCartItem }
 })
 export default class SectionCart extends Vue {
-  isCartVisible = true
+  isCartVisible = true;
 
   toggleCart() {
-    this.isCartVisible = !this.isCartVisible
+    this.isCartVisible = !this.isCartVisible;
   }
 
   increaseQuantity(prodId: number) {
-    this.$accessor.cart.increaseQuantity(prodId)
-    this.$accessor.cart.preserveCartState()
+    this.$accessor.cart.increaseQuantity(prodId);
+    this.$accessor.cart.preserveCartState();
   }
 
   decreaseQuantity(prodId: number) {
-    this.$accessor.cart.decreaseQuantity(prodId)
-    this.$accessor.cart.preserveCartState()
+    this.$accessor.cart.decreaseQuantity(prodId);
+    this.$accessor.cart.preserveCartState();
   }
 
   removeItem(prodId: number) {
-    this.$accessor.cart.removeItem(prodId)
-    this.$accessor.cart.preserveCartState()
+    this.$accessor.cart.removeItem(prodId);
+    this.$accessor.cart.preserveCartState();
   }
 
   get cartItems() {
-    return this.$accessor.cart.cartItems
+    return this.$accessor.cart.cartItems;
   }
 
   @Watch('cartItems', { deep: true })
   onCartItemsChange() {
-    this.isCartVisible = true
+    this.isCartVisible = true;
   }
 
   get productsData() {
-    return this.$accessor.products.productsData
+    return this.$accessor.products.productsData;
   }
 
   get cartTotalPrice() {
-    let total = 0
+    let total = 0;
     this.cartItems.map(i => {
       const indexInProductsData = this.productsData.findIndex(
         p => p.id === i.productId
-      )
+      );
       if (indexInProductsData !== -1) {
-        total += i.quantity * this.productsData[indexInProductsData].price
+        total += i.quantity * this.productsData[indexInProductsData].price;
       }
-    })
-    return priceFormatter(total)
+    });
+    return priceFormatter(total);
   }
 
   get cartItemsAmount() {
-    let total = 0
+    let total = 0;
     this.cartItems.map(i => {
       const indexInProductsData = this.productsData.findIndex(
         p => p.id === i.productId
-      )
+      );
       if (indexInProductsData !== -1) {
-        total += 1
+        total += 1;
       }
-    })
-    return total
+    });
+    return total;
   }
 
   productIndex(id: number) {
-    return this.productsData.findIndex(p => p.id === id)
+    return this.productsData.findIndex(p => p.id === id);
   }
 }
 </script>

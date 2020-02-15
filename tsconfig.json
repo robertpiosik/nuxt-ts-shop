@@ -17,8 +17,8 @@
     "types": ["@types/node", "@nuxt/types", "jest"],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-		"importHelpers": true,
-		"noImplicitAny": true
+    "importHelpers": true,
+    "noImplicitAny": true
   },
   "exclude": ["node_modules"]
 }

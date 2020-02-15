@@ -16,35 +16,35 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop, Watch, Emit, Ref } from 'vue-property-decorator'
+import { Vue, Component, Prop, Watch, Emit, Ref } from 'vue-property-decorator';
 
-import AppButton from './../components/AppButton.vue'
+import AppButton from './../components/AppButton.vue';
 
-import { priceFormatter } from '../utils/transformations'
+import { priceFormatter } from '../utils/transformations';
 
 @Component({ components: { AppButton } })
 export default class ProductsGridItem extends Vue {
-  @Prop({ type: String, required: true }) readonly title!: any
-  @Prop({ type: Number, required: true }) readonly price!: any
-  @Prop({ type: String, required: true }) readonly thumbnail!: any
+  @Prop({ type: String, required: true }) readonly title!: any;
+  @Prop({ type: Number, required: true }) readonly price!: any;
+  @Prop({ type: String, required: true }) readonly thumbnail!: any;
 
-  value = ''
-  penny = ''
+  value = '';
+  penny = '';
 
   @Watch('price', { immediate: true })
   formatPrice() {
-    const { value, penny } = priceFormatter(this.price)
-    this.value = value
-    this.penny = penny
+    const { value, penny } = priceFormatter(this.price);
+    this.value = value;
+    this.penny = penny;
   }
 
   @Emit()
   addToCart() {}
 
-  @Ref('thumbnailImage') readonly thumbnailImage!: HTMLImageElement
+  @Ref('thumbnailImage') readonly thumbnailImage!: HTMLImageElement;
 
   mounted() {
-    ;(<any>window).objectFitPolyfill(this.thumbnailImage)
+    (<any>window).objectFitPolyfill(this.thumbnailImage);
   }
 }
 </script>
