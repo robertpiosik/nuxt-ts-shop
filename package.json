@@ -39,7 +39,7 @@
   "jest": {
     "testMatch": [
       "<rootDir>/**/__tests__/**/*.spec.ts"
-		],
+    ],
     "moduleFileExtensions": [
       "js",
       "ts",
