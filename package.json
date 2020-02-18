@@ -6,11 +6,12 @@
     "dev": "nuxt-ts",
     "generate": "nuxt-ts generate",
     "test": "jest",
-    "test-watch": "jest --watch"
+    "test-watch": "jest --watch",
+    "storybook": "start-storybook"
   },
   "dependencies": {
-    "@nuxt/types": "^0.6.1",
-    "@nuxt/typescript-runtime": "^0.3.8",
+    "@nuxt/types": "^0.6.2",
+    "@nuxt/typescript-runtime": "^0.3.9",
     "@nuxtjs/pwa": "^3.0.0-beta.20",
     "@nuxtjs/sitemap": "^2.0.1",
     "@nuxtjs/style-resources": "^1.0.0",
@@ -18,12 +19,12 @@
     "normalize.css": "^8.0.1",
     "nuxt": "^2.11.0",
     "vue-property-decorator": "^8.4.0",
-    "nuxt-typed-vuex": "^0.1.15",
+    "nuxt-typed-vuex": "^0.1.16",
     "sass-resources-loader": "^2.0.1",
     "tslib": "^1.10.0"
   },
   "devDependencies": {
-    "@nuxt/typescript-build": "^0.5.6",
+    "@nuxt/typescript-build": "^0.5.7",
     "@types/jest": "^25.1.2",
     "node-sass": "^4.13.1",
     "nodemon": "^2.0.2",
@@ -34,34 +35,10 @@
     "sass-loader": "^8.0.2",
     "ts-jest": "^25.2.0",
     "vue-jest": ">=4.0.0-beta.2",
-    "@vue/test-utils": "^1.0.0-beta.31"
-  },
-  "jest": {
-    "testMatch": [
-      "<rootDir>/**/__tests__/**/*.spec.ts"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "ts",
-      "json",
-      "vue"
-    ],
-    "transform": {
-      ".*\\.(vue)$": "vue-jest",
-      "^.+\\.tsx?$": "ts-jest"
-    },
-    "snapshotSerializers": [
-      "jest-serializer-vue"
-    ],
-    "globals": {
-      "vue-jest": {
-        "resources": {
-          "scss": [
-            "./src/assets/scss/mixins.scss",
-            "./src/assets/scss/variables.scss"
-          ]
-        }
-      }
-    }
+    "@vue/test-utils": "^1.0.0-beta.31",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.6",
+    "babel-preset-vue": "^2.0.2",
+    "@storybook/vue": "^5.3.13"
   }
 }
