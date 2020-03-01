@@ -56,7 +56,19 @@ const config: Configuration = {
   buildModules: ['@nuxt/typescript-build', 'nuxt-typed-vuex'],
 
   build: {
-    extend(config, ctx) {},
+		babel: {
+      presets({ isServer }) {
+        return [
+          [
+            require.resolve('@nuxt/babel-preset-app'),
+            {
+              buildTarget: isServer ? 'server' : 'client',
+              corejs: { version: 3 }
+            }
+          ]
+        ];
+      }
+    },
     loaders: {
       cssModules: {
         modules: {
@@ -78,7 +90,7 @@ const config: Configuration = {
   },
 
   sitemap: {
-    hostname: 'https://nuxt-ts-shop.netlify.com',
+    hostname: 'https://nuxt-ts-shop.surge.sh',
     gzip: true
   },
 

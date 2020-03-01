@@ -1,13 +1,13 @@
-<template lang="pug">
-	component(
-		:is="buttonType"
-		:to="to"
-		:href="href"
-		v-on="$listeners"
-		:class="$style.button"
-		v-bind="$attrs"
-	)
-		slot
+<template>
+  <component
+    :is="buttonType"
+    :to="to"
+    :href="href"
+    v-on="$listeners"
+    :class="$style.button"
+    v-bind="$attrs"
+    ><slot />
+  </component>
 </template>
 
 <script lang="ts">

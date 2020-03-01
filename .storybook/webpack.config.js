@@ -31,19 +31,17 @@ module.exports = ({ config }) => {
             }
           }
         },
+        'postcss-loader',
         {
           loader: 'sass-loader',
           options: {
             prependData: `
+						@import "@/assets/scss/mixins.scss";
 						@import "@/assets/scss/variables.scss";
 					`
           }
         }
       ]
-    },
-    {
-      test: /\.pug$/,
-      loader: 'pug-plain-loader'
     }
   );
   config.resolve.extensions.push('.ts', '.tsx');

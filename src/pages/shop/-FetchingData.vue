@@ -1,5 +1,7 @@
-<template lang="pug">
-	app-section {{ `Fetching products data${dots}` }}
+<template>
+  <app-section>
+    {{ `Fetching products data${dots}` }}
+  </app-section>
 </template>
 
 <script lang="ts">

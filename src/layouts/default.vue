@@ -1,11 +1,15 @@
-<template lang="pug">
-	div
-		header(:class="$style.header")
-			div(:class="$style.headerWrapper")
-				div(:class="$style.headerText") Type-Safe Nuxt.js App
-		nuxt(keep-alive)
-		footer(:class="$style.footer")
-			div(:class="$style.footerReminder") Stay hydrated 💧and type-safe 🤙
+<template>
+  <div>
+    <header :class="$style.header">
+      <div :class="$style.headerWrapper">
+        <div :class="$style.headerText">Type-Safe Nuxt.js App</div>
+      </div>
+    </header>
+    <nuxt keep-alive="keep-alive" />
+    <footer :class="$style.footer">
+      <div :class="$style.footerReminder">Stay hydrated 💧and type-safe 🤙</div>
+    </footer>
+  </div>
 </template>
 
 <style lang="scss" module>

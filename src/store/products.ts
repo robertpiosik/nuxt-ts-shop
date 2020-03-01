@@ -11,8 +11,6 @@ interface State {
   productsData: Product[];
 }
 
-export const test = 's';
-
 export const state = (): State => ({
   productsData: []
 });

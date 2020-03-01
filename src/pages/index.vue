@@ -1,6 +1,7 @@
-<template lang="pug">
-	app-section(title="Home")
-		nuxt-link(to="shop") Go to shop
+<template>
+  <app-section title="Home">
+    <nuxt-link to="shop">Go to shop</nuxt-link>
+  </app-section>
 </template>
 
 <script lang="ts">
@@ -13,5 +14,3 @@ import AppSection from './../components/AppSection.vue';
 })
 export default class PageIndex extends Vue {}
 </script>
-
-<style lang="scss" module></style>

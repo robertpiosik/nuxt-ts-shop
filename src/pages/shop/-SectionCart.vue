@@ -1,23 +1,35 @@
-<template lang="pug">
-	app-section(title="Cart")
-		template(v-if="cartItemsAmount > 0")
-			app-button(@click="toggleCart()") {{ isCartVisible ? `HIDE CART (${cartItemsAmount})` : `SHOW CART (${cartItemsAmount})` }}
-			div(v-show="isCartVisible")
-				app-cart-item(
-					v-for="item in cartItems"
-					:key="item.productId"
-					v-if="productIndex(item.productId) !== -1"
-					:title="productsData[productIndex(item.productId)].title"
-					:price="productsData[productIndex(item.productId)].price"
-					:thumbnail="productsData[productIndex(item.productId)].thumbnail"
-					:quantity="item.quantity"
-					@increase-quantity="increaseQuantity(item.productId)"
-					@decrease-quantity="decreaseQuantity(item.productId)"
-					@remove-item="removeItem(item.productId)"
-				)
-				div Cart total: #[strong {{ `${cartTotalPrice.value + cartTotalPrice.penny} zł` }}]
-		template(v-if="productsData.length > 0 && cartItems.length === 0")
-			div Your cart is empty.
+<template>
+  <app-section title="Cart">
+    <template v-if="cartItemsAmount > 0">
+      <app-button @click="toggleCart()">{{
+        isCartVisible
+          ? `HIDE CART (${cartItemsAmount})`
+          : `SHOW CART (${cartItemsAmount})`
+      }}</app-button>
+      <div v-show="isCartVisible">
+        <app-cart-item
+          v-for="item in cartItems"
+          :key="item.productId"
+          :title="$accessor.products.productsData[productIndex(item.productId)].title"
+          :price="$accessor.products.productsData[productIndex(item.productId)].price"
+          :thumbnail="$accessor.products.productsData[productIndex(item.productId)].thumbnail"
+          :quantity="item.quantity"
+          @increase-quantity="increaseQuantity(item.productId)"
+          @decrease-quantity="decreaseQuantity(item.productId)"
+          @remove-item="removeItem(item.productId)"
+        ></app-cart-item>
+        <div>
+          Cart total:
+          <strong>{{
+            `${cartTotalPrice.value + cartTotalPrice.penny} zł`
+          }}</strong>
+        </div>
+      </div>
+    </template>
+    <template v-if="cartItems.length === 0">
+      <div>Your cart is empty.</div>
+    </template></app-section
+  >
 </template>
 
 <script lang="ts">
@@ -52,10 +64,20 @@ export default class SectionCart extends Vue {
   removeItem(prodId: number) {
     this.$accessor.cart.removeItem(prodId);
     this.$accessor.cart.preserveCartState();
-  }
+	}
 
   get cartItems() {
-    return this.$accessor.cart.cartItems;
+    return this.$accessor.cart.cartItems.filter(i => {
+      if (
+        this.$accessor.products.productsData.findIndex(
+          p => p.id === i.productId
+        ) !== -1
+      ) {
+        return i;
+      } else {
+        return false;
+      }
+    });
   }
 
   @Watch('cartItems', { deep: true })
@@ -63,18 +85,14 @@ export default class SectionCart extends Vue {
     this.isCartVisible = true;
   }
 
-  get productsData() {
-    return this.$accessor.products.productsData;
-  }
-
   get cartTotalPrice() {
     let total = 0;
     this.cartItems.map(i => {
-      const indexInProductsData = this.productsData.findIndex(
+      const indexInProductsData = this.$accessor.products.productsData.findIndex(
         p => p.id === i.productId
       );
       if (indexInProductsData !== -1) {
-        total += i.quantity * this.productsData[indexInProductsData].price;
+        total += i.quantity * this.$accessor.products.productsData[indexInProductsData].price;
       }
     });
     return priceFormatter(total);
@@ -83,7 +101,7 @@ export default class SectionCart extends Vue {
   get cartItemsAmount() {
     let total = 0;
     this.cartItems.map(i => {
-      const indexInProductsData = this.productsData.findIndex(
+      const indexInProductsData = this.$accessor.products.productsData.findIndex(
         p => p.id === i.productId
       );
       if (indexInProductsData !== -1) {
@@ -94,7 +112,7 @@ export default class SectionCart extends Vue {
   }
 
   productIndex(id: number) {
-    return this.productsData.findIndex(p => p.id === id);
+    return this.$accessor.products.productsData.findIndex(p => p.id === id);
   }
 }
 </script>

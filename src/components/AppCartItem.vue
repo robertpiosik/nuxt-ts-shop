@@ -1,41 +1,52 @@
-<template lang="pug">
-	div(:class="$style.container")
-
-		div(:class="$style.thumbnailAndTitle")
-			div(:class="$style.thumbnail")
-				img(
-					:src="thumbnail"
-					:alt="title"
-					ref="thumbnailImage"
-				)
-			div(:class="$style.titleAndRemove")
-				div(:class="$style.title") {{ title }}
-				div
-					button(
-						:class="$style.remove"
-						@click="removeItem()"
-					  remove
-					) &#10005; Remove
-
-		div(:class="$style.quantity")
-			div(:class="$style.quantityAmount") {{ quantity }}
-			button(
-				:class="[$style.quantityButton, $style.quantityButtonDecrease]"
-				@click="decreaseQuantity()"
-				decreaseQuantity
-			) -
-			button(
-				:class="[$style.quantityButton, $style.quantityButtonIncrease]"
-				@click="increaseQuantity()"
-				increaseQuantity
-			) +
-
-		div(:class="$style.priceAndTotal")
-			template(v-if="price !== price * quantity")
-				div {{ `${priceFormatted.value + priceFormatted.penny} zł` }}
-				div #[strong {{ `${totalFormatted.value + totalFormatted.penny} zł` }}]
-			template(v-else)
-				div #[strong {{ `${priceFormatted.value + priceFormatted.penny} zł` }}]
+<template>
+  <div :class="$style.container">
+    <div :class="$style.thumbnailAndTitle">
+      <div :class="$style.thumbnail">
+        <img :src="thumbnail" :alt="title" ref="thumbnailImage" />
+      </div>
+      <div :class="$style.titleAndRemove">
+        <div :class="$style.title">{{ title }}</div>
+        <div>
+          <button :class="$style.remove" @click="removeItem()" remove="remove">
+            &#10005; Remove
+          </button>
+        </div>
+      </div>
+    </div>
+    <div :class="$style.quantity">
+      <div :class="$style.quantityAmount">{{ quantity }}</div>
+      <button
+        :class="[$style.quantityButton, $style.quantityButtonDecrease]"
+        @click="decreaseQuantity()"
+        decreaseQuantity="decreaseQuantity"
+      >
+        -</button
+      ><button
+        :class="[$style.quantityButton, $style.quantityButtonIncrease]"
+        @click="increaseQuantity()"
+        increaseQuantity="increaseQuantity"
+      >
+        +
+      </button>
+    </div>
+    <div :class="$style.priceAndTotal">
+      <template v-if="price !== price * quantity">
+        <div>{{ `${priceFormatted.value + priceFormatted.penny} zł` }}</div>
+        <div>
+          <strong>{{
+            `${totalFormatted.value + totalFormatted.penny} zł`
+          }}</strong>
+        </div>
+      </template>
+      <template v-else>
+        <div>
+          <strong>{{
+            `${priceFormatted.value + priceFormatted.penny} zł`
+          }}</strong>
+        </div>
+      </template>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
@@ -70,7 +81,9 @@ export default class CartItem extends Vue {
   @Ref('thumbnailImage') readonly thumbnailImage!: HTMLImageElement;
 
   mounted() {
-    (<any>window).objectFitPolyfill(this.thumbnailImage);
+    if (typeof (<any>window).objectFitPolyfill === 'function') {
+      (<any>window).objectFitPolyfill(this.thumbnailImage);
+    }
   }
 }
 </script>

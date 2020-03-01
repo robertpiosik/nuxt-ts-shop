@@ -1,10 +1,7 @@
-<template lang="pug">
-	transition-group(
-		:class="$style.grid"
-		:move-class="$style.move"
-		tag="div"
-	)
-		slot
+<template>
+  <transition-group :class="$style.grid" :move-class="$style.move" tag="div">
+    <slot />
+  </transition-group>
 </template>
 
 <script lang="ts">

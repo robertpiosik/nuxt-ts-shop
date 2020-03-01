@@ -1,10 +1,13 @@
-<template lang="pug">
-	main
-		template(v-if="productsData.length > 0")
-			section-cart
-			section-products
-		template(v-else)
-			fetching-data
+<template>
+  <main>
+    <template v-if="productsData.length > 0">
+      <section-cart />
+      <section-products />
+    </template>
+    <template v-else>
+      <fetching-data />
+    </template>
+  </main>
 </template>
 
 <script lang="ts">

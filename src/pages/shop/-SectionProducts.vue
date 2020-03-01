@@ -1,26 +1,27 @@
-<template lang="pug">
-	app-section(
-		title="Products"
-	)
-		app-select(
-			label="Sort products..."
-			:options="sortingOptions"
-			v-model="selectedSortingOption"
-		)
-		app-products-grid()
-			app-products-grid-item(
-				v-for="product in productsData"
-				:key="product.id"
-				:title="product.title"
-				:price="product.price"
-				:thumbnail="product.thumbnail"
-				@add-to-cart="addToCart(product.id)"
-			)
+<template>
+  <app-section title="Products">
+    <app-select
+      label="Sort products..."
+      :options="sortingOptions"
+      v-model="selectedSortingOption"
+    ></app-select>
+    <app-products-grid>
+      <app-products-grid-item
+        v-for="product in productsData"
+        :key="product.id"
+        :title="product.title"
+        :price="product.price"
+        :thumbnail="product.thumbnail"
+        @add-to-cart="addToCart(product.id)"
+      ></app-products-grid-item>
+    </app-products-grid>
+  </app-section>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Watch } from 'vue-property-decorator';
 
+import { SortingOption } from './../../interfaces/SortingOption.interface';
 import { priceFormatter } from './../../utils/transformations';
 
 import AppSection from './../../components/AppSection.vue';

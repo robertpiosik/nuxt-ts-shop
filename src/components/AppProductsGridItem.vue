@@ -1,32 +1,34 @@
-<template lang="pug">
-	div(:class="$style.container")
-		div(:class="$style.thumbnail")
-			img(
-				:src="thumbnail"
-				:alt="title"
-				ref="thumbnailImage"
-			)
-		div(:class="$style.title") {{ title }}
-		div(:class="$style.price")
-			span(:class="$style.priceValue") {{ value }}
-			span(:class="$style.pricePenny") {{ penny }}
-			span {{ ` zł` }}
-		div(:class="$style.addToCart")
-			app-button(@click="addToCart()" addToCart) ADD TO CART
+<template>
+  <div :class="$style.container">
+    <div :class="$style.thumbnail">
+      <img :src="thumbnail" :alt="title" ref="thumbnailImage" />
+    </div>
+    <div :class="$style.title">{{ title }}</div>
+    <div :class="$style.price">
+      <span :class="$style.priceValue">{{ value }}</span
+      ><span :class="$style.pricePenny">{{ penny }}</span
+      ><span>{{ ` zł` }}</span>
+    </div>
+    <div :class="$style.addToCart">
+      <app-button @click="addToCart()" addToCart="addToCart"
+        >ADD TO CART</app-button
+      >
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop, Watch, Emit, Ref } from 'vue-property-decorator';
 
-import AppButton from './../components/AppButton.vue';
-
 import { priceFormatter } from '../utils/transformations';
+
+import AppButton from './../components/AppButton.vue';
 
 @Component({ components: { AppButton } })
 export default class ProductsGridItem extends Vue {
-  @Prop({ type: String, required: true }) readonly title!: any;
-  @Prop({ type: Number, required: true }) readonly price!: any;
-  @Prop({ type: String, required: true }) readonly thumbnail!: any;
+  @Prop({ type: String, required: true }) readonly title!: string;
+  @Prop({ type: Number, required: true }) readonly price!: number;
+  @Prop({ type: String, required: true }) readonly thumbnail!: string;
 
   value = '';
   penny = '';
