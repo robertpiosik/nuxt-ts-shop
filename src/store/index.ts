@@ -5,8 +5,6 @@ import * as cart from './cart';
 
 export const state = () => ({});
 
-type RootState = ReturnType<typeof state>;
-
 export const getters = {};
 
 export const mutations = mutationTree(state, {});

@@ -5,14 +5,14 @@
     </div>
     <div :class="$style.title">{{ title }}</div>
     <div :class="$style.price">
-      <span :class="$style.priceValue">{{ value }}</span
-      ><span :class="$style.pricePenny">{{ penny }}</span
-      ><span>{{ ` zł` }}</span>
+      <span :class="$style.priceValue">{{ value }}</span>
+      <span :class="$style.pricePenny">{{ penny }}</span>
+      <span> zł</span>
     </div>
     <div :class="$style.addToCart">
-      <app-button @click="addToCart()" addToCart="addToCart"
-        >ADD TO CART</app-button
-      >
+      <app-button @click="addToCart()" addToCart="addToCart">
+        ADD TO CART
+      </app-button>
     </div>
   </div>
 </template>
